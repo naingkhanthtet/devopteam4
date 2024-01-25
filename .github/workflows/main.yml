@@ -13,14 +13,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-      - name: Setup network
-        run: |
-          docker run -d --name team4dockercontainer
       - name: Build with Maven
         run: mvn package
       - name: Build
-        run: docker build -t team4docker .
+        run: docker build -t team4image .
       - name: Run image
-        run: docker run --name team4docker
+        run: docker run --name team4con team4image
       - name: view logs
-        run: docker logs team4docker
+        run: docker logs team4con
