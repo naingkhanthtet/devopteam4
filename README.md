@@ -4,7 +4,7 @@
 
 # Software Engineering Methods
 
-Main branch build status ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/naingkhanthtet/devopteam4/main.yml?branch=main
+Master branch build status ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/naingkhanthtet/devopteam4/main.yml?branch=master
 )
 
 Develop branch build status ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/naingkhanthtet/devopteam4/main.yml?branch=develop
