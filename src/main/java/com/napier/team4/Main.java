@@ -1,3 +1,4 @@
+// This file is the starting point of the whole app.
 package com.napier.team4;
 
 public class Main {
