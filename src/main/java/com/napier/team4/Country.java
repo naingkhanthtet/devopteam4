@@ -5,8 +5,8 @@ public class Country {
     private String name;
     private String continent;
     private String region;
-    private String population;
-    private String capital;
+    private Integer population;
+    private Integer capital;
 
     public String getCode() {
         return code;
@@ -40,24 +40,31 @@ public class Country {
         this.region = region;
     }
 
-    public String getPopulation() {
+    public Integer getPopulation() {
         return population;
     }
 
-    public void setPopulation(String population) {
+    public void setPopulation(Integer population) {
         this.population = population;
     }
 
-    public String getCapital() {
+    public Integer getCapital() {
         return capital;
     }
 
-    public void setCapital(String capital) {
+    public void setCapital(Integer capital) {
         this.capital = capital;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Country{" +
+                "code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", continent='" + continent + '\'' +
+                ", region='" + region + '\'' +
+                ", population=" + population +
+                ", capital=" + capital +
+                '}';
     }
 }
