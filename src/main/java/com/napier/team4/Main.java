@@ -16,9 +16,13 @@ public class Main {
         List<Country> sortedCountriesByContinent = countryReporter.sortCountryByPopulationBasedOnContinent(con, "Asia");
         // For task 3
         List<Country> sortedCountriesByRegion = countryReporter.sortCountryByPopulationBasedOnRegion(con, "Caribbean");
-        countryReporter.displayCountryInfo(sortedCountries);
-        countryReporter.displayCountryInfo(sortedCountriesByContinent);
-        countryReporter.displayCountryInfo(sortedCountriesByRegion);
+        // For task 4
+        List<Country> topNPopulatedCountries= countryReporter.getTopNPopulatedCountries(con, 5);
+
+//        countryReporter.displayCountryInfo(sortedCountries);
+//        countryReporter.displayCountryInfo(sortedCountriesByContinent);
+//        countryReporter.displayCountryInfo(sortedCountriesByRegion);
+        countryReporter.displayCountryInfo(topNPopulatedCountries);
         mysqlCon.disconnect();
     }
 }
