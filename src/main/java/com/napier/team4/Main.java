@@ -12,9 +12,12 @@ public class Main {
         Connection con = mysqlCon.connect();
         CountryReporter countryReporter = new CountryReporter();
         List<Country> sortedCountries = countryReporter.sortCountryByPopulation(con);
+        // For task 2
+        List<Country> sortedCountriesByContinent = countryReporter.sortCountryByPopulationBasedOnContinent(con, "Asia");
         // For task 3
         List<Country> sortedCountriesByRegion = countryReporter.sortCountryByPopulationBasedOnRegion(con, "Caribbean");
         countryReporter.displayCountryInfo(sortedCountries);
+        countryReporter.displayCountryInfo(sortedCountriesByContinent);
         countryReporter.displayCountryInfo(sortedCountriesByRegion);
         mysqlCon.disconnect();
     }
