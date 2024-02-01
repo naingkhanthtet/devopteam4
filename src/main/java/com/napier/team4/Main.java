@@ -11,6 +11,7 @@ public class Main {
         MYSQLConnection mysqlCon = new MYSQLConnection();
         Connection con = mysqlCon.connect();
         CountryReporter countryReporter = new CountryReporter();
+        // For task 1
         List<Country> sortedCountries = countryReporter.sortCountryByPopulation(con);
         // For task 2
         List<Country> sortedCountriesByContinent = countryReporter.sortCountryByPopulationBasedOnContinent(con, "Asia");
@@ -18,11 +19,13 @@ public class Main {
         List<Country> sortedCountriesByRegion = countryReporter.sortCountryByPopulationBasedOnRegion(con, "Caribbean");
         // For task 4
         List<Country> topNPopulatedCountries= countryReporter.getTopNPopulatedCountries(con, 5);
-
-//        countryReporter.displayCountryInfo(sortedCountries);
-//        countryReporter.displayCountryInfo(sortedCountriesByContinent);
-//        countryReporter.displayCountryInfo(sortedCountriesByRegion);
+        // For task 5
+        List<Country> topNPopulatedCountriesInContinent = countryReporter.getTopNPopulatedCountriesInContinent(con, "Asia", 5);
+        countryReporter.displayCountryInfo(sortedCountries);
+        countryReporter.displayCountryInfo(sortedCountriesByContinent);
+        countryReporter.displayCountryInfo(sortedCountriesByRegion);
         countryReporter.displayCountryInfo(topNPopulatedCountries);
+        countryReporter.displayCountryInfo(topNPopulatedCountriesInContinent);
         mysqlCon.disconnect();
     }
 }
