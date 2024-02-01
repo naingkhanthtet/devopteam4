@@ -184,6 +184,42 @@ public class CountryReporter {
         }
     }
 
+    public List<Country> getTopNPopulatedCountriesInRegion(@NotNull Connection con, String region, int n) {
+        List<Country> countryList = new ArrayList<>();
+        try {
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
+                            + "FROM country "
+                            + "WHERE Region = ? " // Add a WHERE clause to filter by region
+                            + "ORDER BY Population DESC "
+                            + "LIMIT ?";
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            pstmt.setString(1, region); // Set the region parameter in the PreparedStatement
+            pstmt.setInt(2, n); // Set the limit to the desired top N
+            ResultSet rset = pstmt.executeQuery();
+            while (rset.next()) {
+                Country country = new Country();
+                country.setCode(rset.getString("Code"));
+                country.setName(rset.getString("Name"));
+                country.setContinent(rset.getString("Continent"));
+                country.setRegion(rset.getString("Region"));
+                country.setPopulation(rset.getInt("Population"));
+                country.setCapital(rset.getInt("Capital"));
+                countryList.add(country);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return countryList;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country information");
+            throw new RuntimeException(e);
+        }
+    }
     public void displayCountryInfo(@NotNull List<Country> countryList) {
         for (Country country : countryList) {
             System.out.println(country.toString());

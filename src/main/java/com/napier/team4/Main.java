@@ -21,11 +21,14 @@ public class Main {
         List<Country> topNPopulatedCountries= countryReporter.getTopNPopulatedCountries(con, 5);
         // For task 5
         List<Country> topNPopulatedCountriesInContinent = countryReporter.getTopNPopulatedCountriesInContinent(con, "Asia", 5);
+        // For task 6
+        List<Country> topNPopulatedCountriesInRegion = countryReporter.getTopNPopulatedCountriesInRegion(con, "Caribbean", 5);
         countryReporter.displayCountryInfo(sortedCountries);
         countryReporter.displayCountryInfo(sortedCountriesByContinent);
         countryReporter.displayCountryInfo(sortedCountriesByRegion);
         countryReporter.displayCountryInfo(topNPopulatedCountries);
         countryReporter.displayCountryInfo(topNPopulatedCountriesInContinent);
+        countryReporter.displayCountryInfo(topNPopulatedCountriesInRegion);
         mysqlCon.disconnect();
     }
 }
