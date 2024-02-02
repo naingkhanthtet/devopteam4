@@ -21,13 +21,7 @@ public class CountryReporter {
             ResultSet rset = stmt.executeQuery(strSelect);
             // Iterate through the result set and create Country objects
             while (rset.next()) {
-                Country country = new Country();
-                country.setCode(rset.getString("Code"));
-                country.setName(rset.getString("Name"));
-                country.setContinent(rset.getString("Continent"));
-                country.setRegion(rset.getString("Region"));
-                country.setPopulation(rset.getInt("Population"));
-                country.setCapital(rset.getInt("Capital"));
+                Country country = createCountryFromResultSet(rset);
                 countryList.add(country);
             }
 
@@ -37,9 +31,8 @@ public class CountryReporter {
 
             return countryList;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country information");
-            throw new RuntimeException(e);
+            handleSQLException(e);
+            return null;
         }
     }
 
@@ -55,13 +48,7 @@ public class CountryReporter {
             pstmt.setString(1, region); // Set the region parameter in the PreparedStatement
             ResultSet rset = pstmt.executeQuery();
             while (rset.next()) {
-                Country country = new Country();
-                country.setCode(rset.getString("Code"));
-                country.setName(rset.getString("Name"));
-                country.setContinent(rset.getString("Continent"));
-                country.setRegion(rset.getString("Region"));
-                country.setPopulation(rset.getInt("Population"));
-                country.setCapital(rset.getInt("Capital"));
+                Country country = createCountryFromResultSet(rset);
                 countryList.add(country);
             }
 
@@ -72,9 +59,8 @@ public class CountryReporter {
             return countryList;
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country information");
-            throw new RuntimeException(e);
+            handleSQLException(e);
+            return null;
         }
     }
     public List<Country> sortCountryByPopulationBasedOnContinent(@NotNull Connection con, String continent) {
@@ -89,13 +75,7 @@ public class CountryReporter {
             pstmt.setString(1, continent); // Set the continent parameter in the PreparedStatement
             ResultSet rset = pstmt.executeQuery();
             while (rset.next()) {
-                Country country = new Country();
-                country.setCode(rset.getString("Code"));
-                country.setName(rset.getString("Name"));
-                country.setContinent(rset.getString("Continent"));
-                country.setRegion(rset.getString("Region"));
-                country.setPopulation(rset.getInt("Population"));
-                country.setCapital(rset.getInt("Capital"));
+                Country country = createCountryFromResultSet(rset);
                 countryList.add(country);
             }
 
@@ -106,9 +86,8 @@ public class CountryReporter {
             return countryList;
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country information");
-            throw new RuntimeException(e);
+            handleSQLException(e);
+            return null;
         }
     }
 
@@ -124,13 +103,7 @@ public class CountryReporter {
             pstmt.setInt(1, n); // Set the limit to the desired top N
             ResultSet rset = pstmt.executeQuery();
             while (rset.next()) {
-                Country country = new Country();
-                country.setCode(rset.getString("Code"));
-                country.setName(rset.getString("Name"));
-                country.setContinent(rset.getString("Continent"));
-                country.setRegion(rset.getString("Region"));
-                country.setPopulation(rset.getInt("Population"));
-                country.setCapital(rset.getInt("Capital"));
+                Country country = createCountryFromResultSet(rset);
                 countryList.add(country);
             }
 
@@ -141,9 +114,8 @@ public class CountryReporter {
             return countryList;
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country information");
-            throw new RuntimeException(e);
+            handleSQLException(e);
+            return null;
         }
     }
 
@@ -161,13 +133,7 @@ public class CountryReporter {
             pstmt.setInt(2, n); // Set the limit to the desired top N
             ResultSet rset = pstmt.executeQuery();
             while (rset.next()) {
-                Country country = new Country();
-                country.setCode(rset.getString("Code"));
-                country.setName(rset.getString("Name"));
-                country.setContinent(rset.getString("Continent"));
-                country.setRegion(rset.getString("Region"));
-                country.setPopulation(rset.getInt("Population"));
-                country.setCapital(rset.getInt("Capital"));
+                Country country = createCountryFromResultSet(rset);
                 countryList.add(country);
             }
 
@@ -178,9 +144,8 @@ public class CountryReporter {
             return countryList;
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country information");
-            throw new RuntimeException(e);
+            handleSQLException(e);
+            return null;
         }
     }
 
@@ -198,13 +163,7 @@ public class CountryReporter {
             pstmt.setInt(2, n); // Set the limit to the desired top N
             ResultSet rset = pstmt.executeQuery();
             while (rset.next()) {
-                Country country = new Country();
-                country.setCode(rset.getString("Code"));
-                country.setName(rset.getString("Name"));
-                country.setContinent(rset.getString("Continent"));
-                country.setRegion(rset.getString("Region"));
-                country.setPopulation(rset.getInt("Population"));
-                country.setCapital(rset.getInt("Capital"));
+                Country country = createCountryFromResultSet(rset);
                 countryList.add(country);
             }
 
@@ -215,11 +174,28 @@ public class CountryReporter {
             return countryList;
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country information");
-            throw new RuntimeException(e);
+            handleSQLException(e);
+            return null;
         }
     }
+
+    private @NotNull Country createCountryFromResultSet(@NotNull ResultSet rset) throws SQLException {
+        Country country = new Country();
+        country.setCode(rset.getString("Code"));
+        country.setName(rset.getString("Name"));
+        country.setContinent(rset.getString("Continent"));
+        country.setRegion(rset.getString("Region"));
+        country.setPopulation(rset.getInt("Population"));
+        country.setCapital(rset.getInt("Capital"));
+        return country;
+    }
+
+    private void handleSQLException(@NotNull SQLException e) {
+        System.out.println(e.getMessage());
+        System.out.println("Failed to get country information");
+        throw new RuntimeException(e);
+    }
+
     public void displayCountryInfo(@NotNull List<Country> countryList, String title) {
         System.out.println(title);
         for (Country country : countryList) {
