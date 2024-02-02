@@ -8,7 +8,7 @@
 
 ## 2. Communication
 
-- Communicate openly, honestly, and respectfully with your team.
+- Communicate openly, honestly, frankly and respectfully with your team.
 - Share information about your progress regularly with the team.
 - Listen carefully and attentively to your teammates' perspectives.
 - Before responding, make an effort to understand their viewpoints.
