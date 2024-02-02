@@ -1,5 +1,7 @@
 package com.napier.team4;
 
+import de.vandermeer.asciitable.AsciiTable;
+import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
@@ -7,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CountryReporter {
-
     public List<Country> sortCountryByPopulation(@NotNull Connection con) {
         List<Country> countryList = new ArrayList<>();
         try {
@@ -198,9 +199,24 @@ public class CountryReporter {
 
     public void displayCountryInfo(@NotNull List<Country> countryList, String title) {
         System.out.println(title);
+        AsciiTable asciiTable = new AsciiTable();
+        asciiTable.addRule();
+        asciiTable.addRow("Code", "Name", "Continent", "Region", "Population", "Capital");
+        asciiTable.addRule();
         for (Country country : countryList) {
-            System.out.println(country.toString());
+            asciiTable.addRow(
+                    country.getCode(),
+                    country.getName(),
+                    country.getContinent(),
+                    country.getRegion(),
+                    country.getPopulation(),
+                    country.getCapital()
+            );
+            asciiTable.addRule();
         }
+        asciiTable.setTextAlignment(TextAlignment.CENTER);
+        String render = asciiTable.render();
+        System.out.println(render);
         System.out.println();
     }
 }
