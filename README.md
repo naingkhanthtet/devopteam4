@@ -1,6 +1,6 @@
 # READ ME 
 
-![workflow](https://github.com/naingkhanthtet/sem/actions/workflows/main.yml/badge.svg)
+![workflow](https://github.com/naingkhanthtet/devopteam4/actions/workflows/main.yml/badge.svg)
 
 # Software Engineering Methods
 
