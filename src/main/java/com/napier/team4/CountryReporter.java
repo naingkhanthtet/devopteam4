@@ -220,9 +220,11 @@ public class CountryReporter {
             throw new RuntimeException(e);
         }
     }
-    public void displayCountryInfo(@NotNull List<Country> countryList) {
+    public void displayCountryInfo(@NotNull List<Country> countryList, String title) {
+        System.out.println(title);
         for (Country country : countryList) {
             System.out.println(country.toString());
         }
+        System.out.println();
     }
 }
