@@ -8,7 +8,17 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class provides methods for reporting country information based on population, continent, and region.
+ */
 public class CountryReporter {
+
+    /**
+     * Retrieves a list of countries sorted by population in descending order.
+     *
+     * @param con The database connection.
+     * @return A list of countries sorted by population.
+     */
     public List<Country> sortCountryByPopulation(@NotNull Connection con) {
         List<Country> countryList = new ArrayList<>();
         try {
@@ -37,6 +47,13 @@ public class CountryReporter {
         }
     }
 
+    /**
+     * Retrieves a list of countries sorted by population in descending order within a specific region.
+     *
+     * @param con    The database connection.
+     * @param region The region to filter countries.
+     * @return A list of countries sorted by population in the specified region.
+     */
     public List<Country> sortCountryByPopulationBasedOnRegion(@NotNull Connection con, String region) {
         List<Country> countryList = new ArrayList<>();
         try {
@@ -64,6 +81,14 @@ public class CountryReporter {
             return null;
         }
     }
+
+    /**
+     * Retrieves a list of countries sorted by population in descending order within a specific continent.
+     *
+     * @param con      The database connection.
+     * @param continent The continent to filter countries.
+     * @return A list of countries sorted by population in the specified continent.
+     */
     public List<Country> sortCountryByPopulationBasedOnContinent(@NotNull Connection con, String continent) {
         List<Country> countryList = new ArrayList<>();
         try {
@@ -92,6 +117,13 @@ public class CountryReporter {
         }
     }
 
+    /**
+     * Retrieves the top N populated countries from the database.
+     *
+     * @param con The database connection.
+     * @param n   The number of top populated countries to retrieve.
+     * @return A list of top N populated countries.
+     */
     public List<Country> getTopNPopulatedCountries(@NotNull Connection con, int n) {
         List<Country> countryList = new ArrayList<>();
         try {
@@ -120,6 +152,14 @@ public class CountryReporter {
         }
     }
 
+    /**
+     * Retrieves the top N populated countries from a specific continent.
+     *
+     * @param con       The database connection.
+     * @param continent The continent to filter countries.
+     * @param n         The number of top populated countries to retrieve.
+     * @return A list of top N populated countries in the specified continent.
+     */
     public List<Country> getTopNPopulatedCountriesInContinent(@NotNull Connection con, String continent, int n) {
         List<Country> countryList = new ArrayList<>();
         try {
@@ -150,6 +190,14 @@ public class CountryReporter {
         }
     }
 
+    /**
+     * Retrieves the top N populated countries from a specific region.
+     *
+     * @param con    The database connection.
+     * @param region The region to filter countries.
+     * @param n      The number of top populated countries to retrieve.
+     * @return A list of top N populated countries in the specified region.
+     */
     public List<Country> getTopNPopulatedCountriesInRegion(@NotNull Connection con, String region, int n) {
         List<Country> countryList = new ArrayList<>();
         try {
@@ -180,6 +228,13 @@ public class CountryReporter {
         }
     }
 
+    /**
+     * Creates a Country object from the given ResultSet containing country information.
+     *
+     * @param rset The ResultSet containing country information.
+     * @return A Country object populated with data from the ResultSet.
+     * @throws SQLException If a database access error occurs or the column index is out of range.
+     */
     private @NotNull Country createCountryFromResultSet(@NotNull ResultSet rset) throws SQLException {
         Country country = new Country();
         country.setCode(rset.getString("Code"));
@@ -191,12 +246,25 @@ public class CountryReporter {
         return country;
     }
 
+    /**
+     * Handles a SQLException by printing the error message, indicating a failure to retrieve country information,
+     * and throwing a RuntimeException with the original exception.
+     *
+     * @param e The SQLException to handle.
+     * @throws RuntimeException Always throws a RuntimeException with the original SQLException.
+     */
     private void handleSQLException(@NotNull SQLException e) {
         System.out.println(e.getMessage());
         System.out.println("Failed to get country information");
         throw new RuntimeException(e);
     }
 
+    /**
+     * Displays country information in a tabular format.
+     *
+     * @param countryList The list of countries to display.
+     * @param title       The title to display before the table.
+     */
     public void displayCountryInfo(@NotNull List<Country> countryList, String title) {
         System.out.println(title);
         AsciiTable asciiTable = new AsciiTable();

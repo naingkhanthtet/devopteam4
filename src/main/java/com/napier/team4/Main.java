@@ -4,7 +4,20 @@ package com.napier.team4;
 import java.sql.*;
 import java.util.List;
 
+/**
+ * The main class for the Country Information App.
+ * It connects to the database, performs various tasks related to country information,
+ * and displays the results.
+ */
 public class Main {
+
+    /**
+     * The main method that serves as the entry point for the application.
+     * It connects to the MySQL database, performs various tasks related to country information,
+     * and displays the results.
+     *
+     * @param args The command-line arguments (not used in this application).
+     */
     public static void main(String[] args) {
         int topN = 5; // local variable for getting TOP N
         String continent = "Asia"; // local variable for getting countries from continent
