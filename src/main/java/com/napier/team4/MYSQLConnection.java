@@ -4,14 +4,15 @@ import java.sql.*;
 
 public class MYSQLConnection {
     /**
-     * Connection to MySQL database.
-     */
-    private Connection con = null;
-
-    /**
      * Connect to the MySQL database.
      */
-    public void connect()
+    private Connection con;
+
+    public MYSQLConnection() {
+        this.con = null;
+    }
+
+    public Connection connect()
     {
         try
         {
@@ -47,6 +48,7 @@ public class MYSQLConnection {
                 System.out.println("Thread interrupted? Should not happen.");
             }
         }
+        return con;
     }
 
     /**
