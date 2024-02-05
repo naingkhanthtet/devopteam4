@@ -24,13 +24,12 @@ No report is produced.
 Country Reporter
 
 ### Trigger
-A request for a continent's countries report is sent to the Country reporter.
+Organization request the country reporter to export a report of a continent's countries.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a continent's countries in descending order of population.
-2. Country reporter specifies the continent.
-3. The system extracts population information for all countries in the specified continent.
-4. Country reporter provides the report to the organization.
+1. Country reporter access the application.
+2. System extracts the population information for all countries in the specified continent.
+3. System supplies the data to the Country Reporter.
 
 ## EXTENSIONS
 1. **If the continent is not found**:
