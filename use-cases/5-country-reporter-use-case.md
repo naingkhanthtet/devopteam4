@@ -24,7 +24,8 @@ No report is produced.
 Country Reporter
 
 ### Trigger
-A request for a top populated countries in a specific continent report is sent to the Country reporter.
+A request f
+or a top populated countries in a specific continent report is sent to the Country reporter.
 
 ## MAIN SUCCESS SCENARIO
 1. Organization request a report for top N populated countries in the continent.
