@@ -24,13 +24,12 @@ No report is produced.
 Country Reporter
 
 ### Trigger
-A request for a region's countries report is sent to the Country reporter.
+Organization request the country reporter to export a report of a region's countries.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a region's country in descending order of population.
-2. Country reporter specifies the region.
-3. The system extracts population information for all countries in the specified region.
-4. Country reporter provides the report to the organization.
+1. Country reporter access the application.
+2. System extracts the population information for all countries in the specified region.
+3. System supplies the data to the Country Reporter.
 
 ## EXTENSIONS
 1. **If the region is not found**:
