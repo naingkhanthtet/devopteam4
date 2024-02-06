@@ -41,12 +41,17 @@ public class Main {
         // For task 6
         List<Country> topNPopulatedCountriesInRegion = countryReporter.getTopNPopulatedCountriesInRegion(con, region, topN);
 
-        countryReporter.displayCountryInfo(sortedCountries, "Sorted Countries By Population");
-        countryReporter.displayCountryInfo(sortedCountriesInContinent, String.format("Sorted Countries By Population In %s", continent));
-        countryReporter.displayCountryInfo(sortedCountriesInRegion, String.format("Sorted Countries By Population In %s", region));
-        countryReporter.displayCountryInfo(topNPopulatedCountries, String.format("Top %d Populated Countries", topN));
-        countryReporter.displayCountryInfo(topNPopulatedCountriesInContinent, String.format("Top %d Populated Countries In %s", topN, continent));
-        countryReporter.displayCountryInfo(topNPopulatedCountriesInRegion, String.format("Top %d Populated Countries In %s", topN, region));
+//        countryReporter.displayCountryInfo(sortedCountries, "Sorted Countries By Population");
+//        countryReporter.displayCountryInfo(sortedCountriesInContinent, String.format("Sorted Countries By Population In %s", continent));
+//        countryReporter.displayCountryInfo(sortedCountriesInRegion, String.format("Sorted Countries By Population In %s", region));
+//        countryReporter.displayCountryInfo(topNPopulatedCountries, String.format("Top %d Populated Countries", topN));
+//        countryReporter.displayCountryInfo(topNPopulatedCountriesInContinent, String.format("Top %d Populated Countries In %s", topN, continent));
+//        countryReporter.displayCountryInfo(topNPopulatedCountriesInRegion, String.format("Top %d Populated Countries In %s", topN, region));
+
+        CityReporter cityReporter = new CityReporter();
+        // For task 7
+        List<City> sortCityByPopulation = cityReporter.sortCityByPopulation(con);
+        cityReporter.displayCityInfo(sortCityByPopulation, "Sorted Cities By Population");
 
         mysqlCon.disconnect();
     }
