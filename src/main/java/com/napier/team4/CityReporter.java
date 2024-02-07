@@ -51,6 +51,172 @@ public class CityReporter {
     }
 
     /**
+     * Retrieves a list of cities sorted by population based on the specified continent.
+     *
+     * @param con       The database connection.
+     * @param continent The continent name for filtering cities.
+     * @return A list of City objects sorted by population, or null if an exception occurs.
+     */
+    public List<City> sortCityByPopulationBasedOnContinent(@NotNull Connection con, String continent) {
+        List<City> cityList = new ArrayList<>();
+        try {
+            // Create a prepared statement with parameters to prevent SQL injection
+            String strSelect =
+                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.Continent = ? "
+                            + "ORDER BY Population DESC";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            // Set the continent parameter
+            pstmt.setString(1, continent);
+
+            // Execute SQL statement
+            ResultSet rset = pstmt.executeQuery();
+            // Iterate through the result set and create City objects
+            while (rset.next()) {
+                City city = createCityFromResultSet(rset);
+                cityList.add(city);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return cityList;
+
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
+
+    /**
+     * Retrieves a list of cities sorted by population based on the specified region.
+     *
+     * @param con    The database connection.
+     * @param region The region name for filtering cities.
+     * @return A list of City objects sorted by population, or null if an exception occurs.
+     */
+    public List<City> sortCityByPopulationBasedOnRegion(@NotNull Connection con, String region) {
+        List<City> cityList = new ArrayList<>();
+        try {
+            // Create a prepared statement with parameters to prevent SQL injection
+            String strSelect =
+                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.Region = ? "
+                            + "ORDER BY Population DESC";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            // Set the region parameter
+            pstmt.setString(1, region);
+
+            // Execute SQL statement
+            ResultSet rset = pstmt.executeQuery();
+            // Iterate through the result set and create City objects
+            while (rset.next()) {
+                City city = createCityFromResultSet(rset);
+                cityList.add(city);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return cityList;
+
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
+    /**
+     * Retrieves a list of cities in a specific country sorted by population.
+     *
+     * @param con        The database connection.
+     * @param countryCode The country code for filtering cities.
+     * @return A list of City objects sorted by population, or null if an exception occurs.
+     */
+    public List<City> sortCityByPopulationInCountry(@NotNull Connection con, String countryCode) {
+        List<City> cityList = new ArrayList<>();
+        try {
+            // Create a prepared statement with parameters to prevent SQL injection
+            String strSelect =
+                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE city.CountryCode = ? "
+                            + "ORDER BY Population DESC";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            // Set the country code parameter
+            pstmt.setString(1, countryCode);
+
+            // Execute SQL statement
+            ResultSet rset = pstmt.executeQuery();
+            // Iterate through the result set and create City objects
+            while (rset.next()) {
+                City city = createCityFromResultSet(rset);
+                cityList.add(city);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return cityList;
+
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
+    /**
+     * Retrieves a list of cities in a specific district sorted by population.
+     *
+     * @param con      The database connection.
+     * @param district The district name for filtering cities.
+     * @return A list of City objects sorted by population, or null if an exception occurs.
+     */
+    public List<City> sortCityByPopulationInDistrict(@NotNull Connection con, String district) {
+        List<City> cityList = new ArrayList<>();
+        try {
+            // Create a prepared statement with parameters to prevent SQL injection
+            String strSelect =
+                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE city.District = ? "
+                            + "ORDER BY Population DESC";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            // Set the district parameter
+            pstmt.setString(1, district);
+
+            // Execute SQL statement
+            ResultSet rset = pstmt.executeQuery();
+            // Iterate through the result set and create City objects
+            while (rset.next()) {
+                City city = createCityFromResultSet(rset);
+                cityList.add(city);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return cityList;
+
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
+
+    /**
      * Handles SQLException by printing an error message and throwing a RuntimeException.
      *
      * @param e The SQLException to be handled.
