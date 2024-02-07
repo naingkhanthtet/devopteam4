@@ -25,10 +25,7 @@ public class CityReporter {
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement to get cities sorted by population
-            String strSelect =
-                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
-                            + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "ORDER BY Population DESC";
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population " + "FROM city JOIN country ON city.CountryCode = country.Code " + "ORDER BY Population DESC";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -61,11 +58,7 @@ public class CityReporter {
         List<City> cityList = new ArrayList<>();
         try {
             // Create a prepared statement with parameters to prevent SQL injection
-            String strSelect =
-                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
-                            + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE country.Continent = ? "
-                            + "ORDER BY Population DESC";
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population " + "FROM city JOIN country ON city.CountryCode = country.Code " + "WHERE country.Continent = ? " + "ORDER BY Population DESC";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             // Set the continent parameter
@@ -103,11 +96,7 @@ public class CityReporter {
         List<City> cityList = new ArrayList<>();
         try {
             // Create a prepared statement with parameters to prevent SQL injection
-            String strSelect =
-                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
-                            + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE country.Region = ? "
-                            + "ORDER BY Population DESC";
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population " + "FROM city JOIN country ON city.CountryCode = country.Code " + "WHERE country.Region = ? " + "ORDER BY Population DESC";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             // Set the region parameter
@@ -136,7 +125,7 @@ public class CityReporter {
     /**
      * Retrieves a list of cities in a specific country sorted by population.
      *
-     * @param con        The database connection.
+     * @param con         The database connection.
      * @param countryName The country name for filtering cities.
      * @return A list of City objects sorted by population, or null if an exception occurs.
      */
@@ -144,11 +133,7 @@ public class CityReporter {
         List<City> cityList = new ArrayList<>();
         try {
             // Create a prepared statement with parameters to prevent SQL injection
-            String strSelect =
-                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
-                            + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE country.Name = ? "
-                            + "ORDER BY Population DESC";
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population " + "FROM city JOIN country ON city.CountryCode = country.Code " + "WHERE country.Name = ? " + "ORDER BY Population DESC";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             // Set the country code parameter
@@ -185,11 +170,7 @@ public class CityReporter {
         List<City> cityList = new ArrayList<>();
         try {
             // Create a prepared statement with parameters to prevent SQL injection
-            String strSelect =
-                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
-                            + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE city.District = ? "
-                            + "ORDER BY Population DESC";
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population " + "FROM city JOIN country ON city.CountryCode = country.Code " + "WHERE city.District = ? " + "ORDER BY Population DESC";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             // Set the district parameter
@@ -218,7 +199,7 @@ public class CityReporter {
     /**
      * Retrieves the top N populated cities in the world.
      *
-     * @param con The database connection.
+     * @param con  The database connection.
      * @param topN The number of cities to retrieve (top N populated).
      * @return A list of City objects representing the top N populated cities, or null if an exception occurs.
      */
@@ -226,10 +207,7 @@ public class CityReporter {
         List<City> cityList = new ArrayList<>();
         try {
             // Create a prepared statement with parameters to prevent SQL injection
-            String strSelect =
-                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
-                            + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "ORDER BY Population DESC LIMIT ?";
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population " + "FROM city JOIN country ON city.CountryCode = country.Code " + "ORDER BY Population DESC LIMIT ?";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             // Set the top N parameter
@@ -267,11 +245,7 @@ public class CityReporter {
         List<City> cityList = new ArrayList<>();
         try {
             // Create a prepared statement with parameters to prevent SQL injection
-            String strSelect =
-                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
-                            + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE country.Continent = ? "
-                            + "ORDER BY Population DESC LIMIT ?";
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population " + "FROM city JOIN country ON city.CountryCode = country.Code " + "WHERE country.Continent = ? " + "ORDER BY Population DESC LIMIT ?";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             // Set the continent parameter
@@ -311,11 +285,7 @@ public class CityReporter {
         List<City> cityList = new ArrayList<>();
         try {
             // Create a prepared statement with parameters to prevent SQL injection
-            String strSelect =
-                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
-                            + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE country.Region = ? "
-                            + "ORDER BY Population DESC LIMIT ?";
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population " + "FROM city JOIN country ON city.CountryCode = country.Code " + "WHERE country.Region = ? " + "ORDER BY Population DESC LIMIT ?";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             // Set the region parameter
@@ -355,11 +325,7 @@ public class CityReporter {
         List<City> cityList = new ArrayList<>();
         try {
             // Create a prepared statement with parameters to prevent SQL injection
-            String strSelect =
-                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
-                            + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE country.Name = ? "
-                            + "ORDER BY Population DESC LIMIT ?";
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population " + "FROM city JOIN country ON city.CountryCode = country.Code " + "WHERE country.Name = ? " + "ORDER BY Population DESC LIMIT ?";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             // Set the country code parameter
@@ -399,11 +365,7 @@ public class CityReporter {
         List<City> cityList = new ArrayList<>();
         try {
             // Create a prepared statement with parameters to prevent SQL injection
-            String strSelect =
-                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
-                            + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE city.District = ? "
-                            + "ORDER BY Population DESC LIMIT ?";
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population " + "FROM city JOIN country ON city.CountryCode = country.Code " + "WHERE city.District = ? " + "ORDER BY Population DESC LIMIT ?";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             // Set the district parameter
@@ -467,8 +429,13 @@ public class CityReporter {
      */
     public void displayCityInfo(@NotNull List<City> cityList, String title) {
         System.out.println(title);
+
+        String titleAlignment = " %-40s %-40s %-40s %-20s %n";
+        System.out.format(titleAlignment, "Name", "Country", "District", "Population");
+        String bodyAlignment = " %-40s %-40s %-40s %-20d %n";
         for (City city : cityList) {
-            System.out.println(city);
+            System.out.format(bodyAlignment, city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
         }
+        System.out.println();
     }
 }
