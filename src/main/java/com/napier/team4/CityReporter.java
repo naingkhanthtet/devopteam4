@@ -215,6 +215,222 @@ public class CityReporter {
         }
     }
 
+    /**
+     * Retrieves the top N populated cities in the world.
+     *
+     * @param con The database connection.
+     * @param topN The number of cities to retrieve (top N populated).
+     * @return A list of City objects representing the top N populated cities, or null if an exception occurs.
+     */
+    public List<City> getTopNPopulatedCities(@NotNull Connection con, int topN) {
+        List<City> cityList = new ArrayList<>();
+        try {
+            // Create a prepared statement with parameters to prevent SQL injection
+            String strSelect =
+                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode = country.Code "
+                            + "ORDER BY Population DESC LIMIT ?";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            // Set the top N parameter
+            pstmt.setInt(1, topN);
+
+            // Execute SQL statement
+            ResultSet rset = pstmt.executeQuery();
+            // Iterate through the result set and create City objects
+            while (rset.next()) {
+                City city = createCityFromResultSet(rset);
+                cityList.add(city);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return cityList;
+
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
+    /**
+     * Retrieves the top N populated cities in a specific continent.
+     *
+     * @param con       The database connection.
+     * @param continent The continent name for filtering cities.
+     * @param topN      The number of cities to retrieve (top N populated).
+     * @return A list of City objects representing the top N populated cities in the specified continent, or null if an exception occurs.
+     */
+    public List<City> getTopNPopulatedCitiesInContinent(@NotNull Connection con, String continent, int topN) {
+        List<City> cityList = new ArrayList<>();
+        try {
+            // Create a prepared statement with parameters to prevent SQL injection
+            String strSelect =
+                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.Continent = ? "
+                            + "ORDER BY Population DESC LIMIT ?";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            // Set the continent parameter
+            pstmt.setString(1, continent);
+            // Set the top N parameter
+            pstmt.setInt(2, topN);
+
+            // Execute SQL statement
+            ResultSet rset = pstmt.executeQuery();
+            // Iterate through the result set and create City objects
+            while (rset.next()) {
+                City city = createCityFromResultSet(rset);
+                cityList.add(city);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return cityList;
+
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
+    /**
+     * Retrieves the top N populated cities in a specific region.
+     *
+     * @param con    The database connection.
+     * @param region The region name for filtering cities.
+     * @param topN   The number of cities to retrieve (top N populated).
+     * @return A list of City objects representing the top N populated cities in the specified region, or null if an exception occurs.
+     */
+    public List<City> getTopNPopulatedCitiesInRegion(@NotNull Connection con, String region, int topN) {
+        List<City> cityList = new ArrayList<>();
+        try {
+            // Create a prepared statement with parameters to prevent SQL injection
+            String strSelect =
+                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.Region = ? "
+                            + "ORDER BY Population DESC LIMIT ?";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            // Set the region parameter
+            pstmt.setString(1, region);
+            // Set the top N parameter
+            pstmt.setInt(2, topN);
+
+            // Execute SQL statement
+            ResultSet rset = pstmt.executeQuery();
+            // Iterate through the result set and create City objects
+            while (rset.next()) {
+                City city = createCityFromResultSet(rset);
+                cityList.add(city);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return cityList;
+
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
+    /**
+     * Retrieves the top N populated cities in a specific country.
+     *
+     * @param con         The database connection.
+     * @param countryCode The country code for filtering cities.
+     * @param topN        The number of cities to retrieve (top N populated).
+     * @return A list of City objects representing the top N populated cities in the specified country, or null if an exception occurs.
+     */
+    public List<City> getTopNPopulatedCitiesInCountry(@NotNull Connection con, String countryCode, int topN) {
+        List<City> cityList = new ArrayList<>();
+        try {
+            // Create a prepared statement with parameters to prevent SQL injection
+            String strSelect =
+                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE city.CountryCode = ? "
+                            + "ORDER BY Population DESC LIMIT ?";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            // Set the country code parameter
+            pstmt.setString(1, countryCode);
+            // Set the top N parameter
+            pstmt.setInt(2, topN);
+
+            // Execute SQL statement
+            ResultSet rset = pstmt.executeQuery();
+            // Iterate through the result set and create City objects
+            while (rset.next()) {
+                City city = createCityFromResultSet(rset);
+                cityList.add(city);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return cityList;
+
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
+    /**
+     * Retrieves the top N populated cities in a specific district.
+     *
+     * @param con      The database connection.
+     * @param district The district name for filtering cities.
+     * @param topN     The number of cities to retrieve (top N populated).
+     * @return A list of City objects representing the top N populated cities in the specified district, or null if an exception occurs.
+     */
+    public List<City> getTopNPopulatedCitiesInDistrict(@NotNull Connection con, String district, int topN) {
+        List<City> cityList = new ArrayList<>();
+        try {
+            // Create a prepared statement with parameters to prevent SQL injection
+            String strSelect =
+                    "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE city.District = ? "
+                            + "ORDER BY Population DESC LIMIT ?";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            // Set the district parameter
+            pstmt.setString(1, district);
+            // Set the top N parameter
+            pstmt.setInt(2, topN);
+
+            // Execute SQL statement
+            ResultSet rset = pstmt.executeQuery();
+            // Iterate through the result set and create City objects
+            while (rset.next()) {
+                City city = createCityFromResultSet(rset);
+                cityList.add(city);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return cityList;
+
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
 
     /**
      * Handles SQLException by printing an error message and throwing a RuntimeException.
