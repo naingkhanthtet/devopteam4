@@ -10,6 +10,36 @@ public class City {
     private int population;
 
     /**
+     * Default constructor for the City class.
+     * Initializes the City with default values:
+     * - name: null
+     * - country: null
+     * - district: null
+     * - population: 0
+     */
+    public City() {
+        this.name = null;
+        this.country = null;
+        this.district = null;
+        this.population = 0;
+    }
+
+    /**
+     * Parameterized constructor for the City class.
+     *
+     * @param name       The name of the city.
+     * @param country    The country where the city is located.
+     * @param district   The district or region within the country.
+     * @param population The population of the city.
+     */
+    public City(String name, String country, String district, int population) {
+        this.name = name;
+        this.country = country;
+        this.district = district;
+        this.population = population;
+    }
+
+    /**
      * Get the name of the city.
      *
      * @return The name of the city.

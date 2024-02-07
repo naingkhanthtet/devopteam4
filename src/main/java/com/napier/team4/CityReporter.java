@@ -425,13 +425,21 @@ public class CityReporter {
      * @param cityList The list of City objects to be displayed.
      * @param title    The title to be displayed before the list of cities.
      */
-    public void displayCityInfo(@NotNull List<City> cityList, String title) {
+    public void displayCityInfo(List<City> cityList, String title) {
+        // Check cityList is not null
+        if (cityList == null || title == null)
+        {
+            System.out.println("No cities or no title information provided.");
+            return;
+        }
         System.out.println(title);
-
         String titleAlignment = " %-40s %-40s %-40s %-20s %n";
         System.out.format(titleAlignment, "Name", "Country", "District", "Population");
         String bodyAlignment = " %-40s %-40s %-40s %-20d %n";
         for (City city : cityList) {
+            if (city == null) {
+                continue;
+            }
             System.out.format(bodyAlignment, city.getName(), city.getCountry(), city.getDistrict(), city.getPopulation());
         }
         System.out.println();
