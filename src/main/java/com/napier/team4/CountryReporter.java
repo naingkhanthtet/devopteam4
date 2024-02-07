@@ -267,24 +267,14 @@ public class CountryReporter {
      */
     public void displayCountryInfo(@NotNull List<Country> countryList, String title) {
         System.out.println(title);
-        AsciiTable asciiTable = new AsciiTable();
-        asciiTable.addRule();
-        asciiTable.addRow("Code", "Name", "Continent", "Region", "Population", "Capital");
-        asciiTable.addRule();
+
+        String titleAlignment = " %-10s %-40s %-20s %-30s %-20s %-10s %n";
+        System.out.format(titleAlignment, "Code", "Name", "Continent", "Region", "Population", "Capital");
+        String bodyAlignment = " %-10s %-40s %-20s %-30s %-20d %-10d %n";
         for (Country country : countryList) {
-            asciiTable.addRow(
-                    country.getCode(),
-                    country.getName(),
-                    country.getContinent(),
-                    country.getRegion(),
-                    country.getPopulation(),
-                    country.getCapital()
-            );
-            asciiTable.addRule();
+            System.out.format(bodyAlignment, country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
         }
-        asciiTable.setTextAlignment(TextAlignment.CENTER);
-        String render = asciiTable.render();
-        System.out.println(render);
         System.out.println();
     }
+
 }
