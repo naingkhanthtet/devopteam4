@@ -221,7 +221,7 @@ public class CityReporter {
      *
      * @param e The SQLException to be handled.
      */
-    private void handleSQLException(SQLException e) {
+    private void handleSQLException(@NotNull SQLException e) {
         System.out.println(e.getMessage());
         System.out.println("Failed to get city information");
         throw new RuntimeException(e);
@@ -234,7 +234,7 @@ public class CityReporter {
      * @return A City object created from the ResultSet.
      * @throws SQLException If an error occurs while retrieving data from the ResultSet.
      */
-    private City createCityFromResultSet(ResultSet rset) throws SQLException {
+    private @NotNull City createCityFromResultSet(@NotNull ResultSet rset) throws SQLException {
         City city = new City();
         city.setName(rset.getString("CityName"));
         city.setCountry(rset.getString("CountryName"));
