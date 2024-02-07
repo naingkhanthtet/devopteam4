@@ -137,22 +137,22 @@ public class CityReporter {
      * Retrieves a list of cities in a specific country sorted by population.
      *
      * @param con        The database connection.
-     * @param countryCode The country code for filtering cities.
+     * @param countryName The country name for filtering cities.
      * @return A list of City objects sorted by population, or null if an exception occurs.
      */
-    public List<City> sortCityByPopulationInCountry(@NotNull Connection con, String countryCode) {
+    public List<City> sortCityByPopulationInCountry(@NotNull Connection con, String countryName) {
         List<City> cityList = new ArrayList<>();
         try {
             // Create a prepared statement with parameters to prevent SQL injection
             String strSelect =
                     "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
                             + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE city.CountryCode = ? "
+                            + "WHERE country.Name = ? "
                             + "ORDER BY Population DESC";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             // Set the country code parameter
-            pstmt.setString(1, countryCode);
+            pstmt.setString(1, countryName);
 
             // Execute SQL statement
             ResultSet rset = pstmt.executeQuery();
@@ -347,23 +347,23 @@ public class CityReporter {
      * Retrieves the top N populated cities in a specific country.
      *
      * @param con         The database connection.
-     * @param countryCode The country code for filtering cities.
+     * @param countryName The country name for filtering cities.
      * @param topN        The number of cities to retrieve (top N populated).
      * @return A list of City objects representing the top N populated cities in the specified country, or null if an exception occurs.
      */
-    public List<City> getTopNPopulatedCitiesInCountry(@NotNull Connection con, String countryCode, int topN) {
+    public List<City> getTopNPopulatedCitiesInCountry(@NotNull Connection con, String countryName, int topN) {
         List<City> cityList = new ArrayList<>();
         try {
             // Create a prepared statement with parameters to prevent SQL injection
             String strSelect =
                     "SELECT city.Name as CityName, country.Name as CountryName, city.District, city.Population "
                             + "FROM city JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE city.CountryCode = ? "
+                            + "WHERE country.Name = ? "
                             + "ORDER BY Population DESC LIMIT ?";
 
             PreparedStatement pstmt = con.prepareStatement(strSelect);
             // Set the country code parameter
-            pstmt.setString(1, countryCode);
+            pstmt.setString(1, countryName);
             // Set the top N parameter
             pstmt.setInt(2, topN);
 
