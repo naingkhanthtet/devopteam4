@@ -1,7 +1,5 @@
 package com.napier.team4;
 
-import de.vandermeer.asciitable.AsciiTable;
-import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;

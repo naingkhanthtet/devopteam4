@@ -26,7 +26,13 @@ public class Main {
         String district = "Kabol"; // local variable for getting cities from district
         // Connect to MYSQL
         MYSQLConnection mysqlCon = new MYSQLConnection();
-        Connection con = mysqlCon.connect();
+        Connection con = null;
+        if (args.length < 1) {
+            con = mysqlCon.connect("localhost:33062", 0);
+        } else {
+            con = mysqlCon.connect("db:3306", 30000);
+        }
+
 
         CountryReporter countryReporter = new CountryReporter();
         // For task 1
