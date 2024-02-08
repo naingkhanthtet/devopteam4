@@ -85,7 +85,7 @@ public class Main {
 //        cityReporter.displayCityInfo(topNPopulatedCities, String.format("Top %d Populated Cities", topN));
 //        cityReporter.displayCityInfo(topNPopulatedCitiesInContinent, String.format("Top %d Populated Cities In %s", topN, continent));
 //        cityReporter.displayCityInfo(topNPopulatedCitiesInRegion, String.format("Top %d Populated Cities In %s", topN, region));
-//        cityReporter.displayCityInfo(topNPopulatedCitiesInCountry, String.format("Top %d Populated Cities In %s", topN, country));
+        cityReporter.displayCityInfo(topNPopulatedCitiesInCountry, String.format("Top %d Populated Cities In %s", topN, country));
 //        cityReporter.displayCityInfo(topNPopulatedCitiesInDistrict, String.format("Top %d Populated Cities In %s", topN, district));
 
         mysqlCon.disconnect();
