@@ -8,6 +8,31 @@ public class Country {
     private Integer population;
     private Integer capital;
 
+    /**
+     * Constructs a new Country object with default values.
+     */
+    public Country() {
+    }
+
+    /**
+     * Constructs a new Country object with the specified attributes.
+     *
+     * @param code       the country code
+     * @param name       the name of the country
+     * @param continent  the continent where the country is located
+     * @param region     the region within the continent
+     * @param population the population of the country
+     * @param capital    the capital city code of the country
+     */
+    public Country(String code, String name, String continent, String region, Integer population, Integer capital) {
+        this.code = code;
+        this.name = name;
+        this.continent = continent;
+        this.region = region;
+        this.population = population;
+        this.capital = capital;
+    }
+
     public String getCode() {
         return code;
     }

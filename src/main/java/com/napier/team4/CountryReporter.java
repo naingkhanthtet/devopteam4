@@ -263,13 +263,21 @@ public class CountryReporter {
      * @param countryList The list of countries to display.
      * @param title       The title to display before the table.
      */
-    public void displayCountryInfo(@NotNull List<Country> countryList, String title) {
+    public void displayCountryInfo( List<Country> countryList, String title) {
+        // Check cityList is not null
+        if (countryList == null || title == null) {
+            System.out.println("No countries or no title information provided.");
+            return;
+        }
         System.out.println(title);
 
         String titleAlignment = " %-10s %-40s %-20s %-30s %-20s %-10s %n";
         System.out.format(titleAlignment, "Code", "Name", "Continent", "Region", "Population", "Capital");
         String bodyAlignment = " %-10s %-40s %-20s %-30s %-20d %-10d %n";
         for (Country country : countryList) {
+            if (country == null) {
+                continue;
+            }
             System.out.format(bodyAlignment, country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
         }
         System.out.println();

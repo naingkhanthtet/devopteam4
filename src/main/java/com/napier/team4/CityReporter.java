@@ -427,8 +427,7 @@ public class CityReporter {
      */
     public void displayCityInfo(List<City> cityList, String title) {
         // Check cityList is not null
-        if (cityList == null || title == null)
-        {
+        if (cityList == null || title == null) {
             System.out.println("No cities or no title information provided.");
             return;
         }

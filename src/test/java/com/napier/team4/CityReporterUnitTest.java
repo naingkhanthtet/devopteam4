@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 
-public class AppUnitTest {
+public class CityReporterUnitTest {
 
     static CityReporter cityReporter;
 
