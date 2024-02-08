@@ -77,13 +77,13 @@ public class Main {
         // For task 16
         List<City> topNPopulatedCitiesInDistrict = cityReporter.getTopNPopulatedCitiesInDistrict(con, district, topN);
 
-//        cityReporter.displayCityInfo(sortCityByPopulation, "Sorted Cities By Population");
-//        cityReporter.displayCityInfo(sortCityByPopulationBasedOnContinent, String.format("Sorted Cities By Population In %s", continent));
-//        cityReporter.displayCityInfo(sortCityByPopulationBasedOnRegion, String.format("Sorted Cities By Population In %s", region));
-//        cityReporter.displayCityInfo(sortCityByPopulationInCountry, String.format("Sorted Cities By Population In %s", country));
-//        cityReporter.displayCityInfo(sortCityByPopulationInDistrict, String.format("Sorted Cities By Population In %s", district));
-//        cityReporter.displayCityInfo(topNPopulatedCities, String.format("Top %d Populated Cities", topN));
-//        cityReporter.displayCityInfo(topNPopulatedCitiesInContinent, String.format("Top %d Populated Cities In %s", topN, continent));
+        cityReporter.displayCityInfo(sortCityByPopulation, "Sorted Cities By Population");
+        cityReporter.displayCityInfo(sortCityByPopulationBasedOnContinent, String.format("Sorted Cities By Population In %s", continent));
+        cityReporter.displayCityInfo(sortCityByPopulationBasedOnRegion, String.format("Sorted Cities By Population In %s", region));
+        cityReporter.displayCityInfo(sortCityByPopulationInCountry, String.format("Sorted Cities By Population In %s", country));
+        cityReporter.displayCityInfo(sortCityByPopulationInDistrict, String.format("Sorted Cities By Population In %s", district));
+        cityReporter.displayCityInfo(topNPopulatedCities, String.format("Top %d Populated Cities", topN));
+        cityReporter.displayCityInfo(topNPopulatedCitiesInContinent, String.format("Top %d Populated Cities In %s", topN, continent));
         cityReporter.displayCityInfo(topNPopulatedCitiesInRegion, String.format("Top %d Populated Cities In %s", topN, region));
         cityReporter.displayCityInfo(topNPopulatedCitiesInCountry, String.format("Top %d Populated Cities In %s", topN, country));
         cityReporter.displayCityInfo(topNPopulatedCitiesInDistrict, String.format("Top %d Populated Cities In %s", topN, district));
