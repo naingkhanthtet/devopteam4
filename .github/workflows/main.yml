@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - release
 jobs:
   CityUnitTests:
     name: City Unit Test
