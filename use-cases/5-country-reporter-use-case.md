@@ -1,4 +1,4 @@
-# USE CASE: 5. Produce a report of top N populated countries in the country
+# USE CASE: 5. Produce a report of top N populated countries in the continent
 
 ## CHARACTERISTIC INFORMATION
 
@@ -23,15 +23,14 @@ No report is produced.
 ### Primary Actor
 Country Reporter
 
-### Trigger
-A request f
-or a top populated countries in a specific continent report is sent to the Country reporter.
+#### Trigger
+Organization request the country reporter to export a report of top N populated countries in the continent.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a report for top N populated countries in the continent.
-2. Country reporter specifies the number (N).
-3. Country reporter extracts top N populated countries in the continent.
-4. Country reporter provides the report to the organization.
+1. Country reporter access the application.
+2. System extracts the top N populated countries in the continent from the database.
+3. System supplies the data to the Country Reporter.
+
 
 ## EXTENSIONS
 1. **If the population is not available**:

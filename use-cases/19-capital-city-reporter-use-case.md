@@ -24,13 +24,12 @@ No report is produced.
 Capital City Reporter
 
 ### Trigger
-A request for a report of a capital cities in a region by population to the Capital City Reporter.
+Organization request the capital city reporter to export a report of all capital cities in a region by population.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a report of capital cities in a region by population.
-2. Capital City Reporter sort the population.
-3. Capital City Reporter extracts the capital cities in a region.
-4. Capital City Reporter provides the report to the organization.
+1. Capital City reporter access the application.
+2. System extracts all capital cities in a region by population from the database.
+3. System supplies the data to the Capital City Reporter.
 
 ## EXTENSIONS
 1. **If the capital city, region, population does not exist**:

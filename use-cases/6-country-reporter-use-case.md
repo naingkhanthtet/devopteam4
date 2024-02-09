@@ -32,6 +32,14 @@ A request for a top populated countries in a specific region report is sent to t
 3. Country reporter extracts top N populated countries in the region.
 4. Country reporter provides the report to the organization.
 
+#### Trigger
+Organization request the country reporter to export a report of top N populated countries in the region.
+
+## MAIN SUCCESS SCENARIO
+1. Country reporter access the application.
+2. System extracts the top N populated countries in the region from the database.
+3. System supplies the data to the City Reporter.
+
 ## EXTENSIONS
 1. **If the population is not available**:
     1. Country reporter informs the organization about the unavailability of world database.

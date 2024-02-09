@@ -24,13 +24,12 @@ No report is produced.
 Capital City Reporter
 
 ### Trigger
-A request for a report of a top N populated capital cities in a continent to the Capital City Reporter.
+Organization request the capital city reporter to export a report of top N populated capital cities in the continent.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a report of top N populated capital cities in a continent.
-2. Capital City Reporter specifies the number of chart size.
-3. Capital City Reporter extracts top N populated capital cities in a continent.
-4. Capital City Reporter provides the report to the organization.
+1. Capital City reporter access the application.
+2. System extracts top N populated capital cities in the continent from the database.
+3. System supplies the data to the Capital City Reporter.
 
 ## EXTENSIONS
 1. **If the capital city, continent, population does not exist**:

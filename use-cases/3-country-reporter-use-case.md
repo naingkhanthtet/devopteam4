@@ -28,7 +28,7 @@ Organization request the country reporter to export a report of a region's count
 
 ## MAIN SUCCESS SCENARIO
 1. Country reporter access the application.
-2. System extracts the population information for all countries in the specified region.
+2. System extracts the population information for all countries in the specified region from the database.
 3. System supplies the data to the Country Reporter.
 
 ## EXTENSIONS
