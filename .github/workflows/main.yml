@@ -2,9 +2,8 @@ name: A workflow for team 4
 on:
   push:
     branches:
-      - feature/city-report
       - master
-      - develop
+      - feature/city-report
 jobs:
   CityUnitTests:
     name: City Unit Test
@@ -21,12 +20,12 @@ jobs:
           distribution: 'adopt'
       - name: City Unit Tests
         run: mvn -Dtest=com.napier.team4.CityReporterUnitTest test
-      - name: CodeCov
-        uses: codecov/codecov-action@v2
-        with:
-          directory: ./target/site/jacoco
-          flags: City-Unit-Tests
-          verbose: true
+#      - name: CodeCov
+#        uses: codecov/codecov-action@v2
+#        with:
+#          directory: ./target/site/jacoco
+#          flags: City-Unit-Tests
+#          verbose: true
   CountryUnitTests:
     name: Country Unit Test
     runs-on: ubuntu-20.04
@@ -42,12 +41,12 @@ jobs:
           distribution: 'adopt'
       - name: Country Unit Tests
         run: mvn -Dtest=com.napier.team4.CountryReporterUnitTest test
-      - name: CodeCov
-        uses: codecov/codecov-action@v2
-        with:
-          directory: ./target/site/jacoco
-          flags: Country-Unit-Tests
-          verbose: true
+#      - name: CodeCov
+#        uses: codecov/codecov-action@v2
+#        with:
+#          directory: ./target/site/jacoco
+#          flags: Country-Unit-Tests
+#          verbose: true
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
