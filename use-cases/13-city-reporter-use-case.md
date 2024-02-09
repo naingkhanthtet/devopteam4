@@ -23,14 +23,13 @@ No report is produced.
 ### Primary Actor
 City Reporter
 
-### Trigger
-A request for a report of a top N populated cities in a continent to the City Reporter.
+#### Trigger
+Organization request the city reporter to export a report of top N populated cities in the continent.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a report of top N populated cities in a continent.
-2. City Reporter specifies the number of chart size.
-3. City Reporter extracts top N populated cities in a continent.
-4. City Reporter provides the report to the organization.
+1. City reporter access the application.
+2. System extracts top N populated cities in the continent in descending population from the database.
+3. System supplies the data to the City Reporter.
 
 ## EXTENSIONS
 1. **If the city, continent, population does not exist**:

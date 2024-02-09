@@ -24,13 +24,12 @@ No report is produced.
 City Reporter
 
 ### Trigger
-A request for a report of a top N populated cities in a country to the City Reporter.
+Organization request the city reporter to export a report of top N populated cities in the country.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a report of top N populated cities in a country.
-2. City Reporter specifies the number of chart size.
-3. City Reporter extracts top N populated cities in a country.
-4. City Reporter provides the report to the organization.
+1. City reporter access the application.
+2. System extracts top N populated cities in the country in descending population from the database.
+3. System supplies the data to the City Reporter.
 
 ## EXTENSIONS
 1. **If the city, country, population does not exist**:

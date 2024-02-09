@@ -23,14 +23,13 @@ No report is produced.
 ### Primary Actor
 City Reporter
 
-### Trigger
-A request for a report of a top N populated cities in the world to the City Reporter.
+#### Trigger
+Organization request the city reporter to export a report of top N populated cities in the world.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a report of top N populated cities in the world.
-2. City Reporter specifies the number of chart size.
-3. City Reporter extracts top N populated cities in the world.
-4. City Reporter provides the report to the organization.
+1. City reporter access the application.
+2. System extracts top N populated cities in the world in descending population from the database.
+3. System supplies the data to the City Reporter.
 
 ## EXTENSIONS
 1. **If the city, population does not exist**:
