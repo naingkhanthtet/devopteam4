@@ -24,7 +24,7 @@ No report is produced.
 Population Reporter
 
 ### Trigger
-Organization request the Population reporter to export a report of population of the world.
+Organization request the Population reporter to export a report of population of the district.
 
 ## MAIN SUCCESS SCENARIO
 1. Population reporter access the application.
