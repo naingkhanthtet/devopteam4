@@ -24,12 +24,12 @@ No report is produced.
 Population Reporter
 
 ### Trigger
-A request for a country population.
+Organization request the Population reporter to export a report of population of the country.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a report of a country population.
-2. Population Reporter extracts population of a country.
-3. Population Reporter provides the report to the organization.
+1. Population reporter access the application.
+2. System extracts population of the country from the database.
+3. System supplies the data to the Population Reporter.
 
 ## EXTENSIONS
 1. **If the country, population does not exist**:

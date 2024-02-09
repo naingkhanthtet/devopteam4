@@ -24,13 +24,13 @@ No report is produced.
 Capital City Reporter
 
 ### Trigger
-A request for a report of a capital cities in the world by descending population to the Capital City Reporter.
+Organization request the capital city reporter to export a report of all capital city in the world in the descending population order.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a report of capital cities in the world by descending population.
-2. Capital City Reporter sort the population in the descending order.
-3. Capital City Reporter extracts the capital cities in the world.
-4. Capital City Reporter provides the report to the organization.
+1. Capital city reporter access the application.
+2. System extracts all capital cities in the world in the descending population order from the database.
+3. System supplies the data to the Capital city Reporter.
+
 
 ## EXTENSIONS
 1. **If the capital city, population does not exist**:

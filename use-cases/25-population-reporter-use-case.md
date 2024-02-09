@@ -24,12 +24,12 @@ No report is produced.
 Population Reporter
 
 ### Trigger
-A request for a population report of each country including citizens and non-citizens to the Population Reporter.
+Organization request the Population reporter to export a report of population for each country including people living in cities and not.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a report of population of each country including citizens and non-citizens.
-2. Population Reporter extracts population for each country with all types of citizens.
-3. Population Reporter provides the report to the organization.
+1. Population reporter access the application.
+2. System extracts population for each country including people living in cities and not from the database.
+3. System supplies the data to the Population Reporter.
 
 ## EXTENSIONS
 1. **If the city, country, population does not exist**:

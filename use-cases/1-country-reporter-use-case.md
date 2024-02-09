@@ -1,4 +1,4 @@
-# USE CASE: Produce a report of all countries from largest population to smallest
+# USE CASE: 1. Produce a report of all countries from largest population to smallest
 
 ## CHARACTERISTIC INFORMATION
 
@@ -24,13 +24,12 @@ No report is produced.
 Country Reporter
 
 ### Trigger
-A request for a world country population report is sent to the Country reporter.
+Organization request the country reporter to export a report of world country population.
 
 ## MAIN SUCCESS SCENARIO
-1. The Organization request world country population.
-2. Country reporter access population data for all countries.
-3. The system sorts countries by population from largest to smallest.
-4. Country reporter provides report to the organization.
+1. Country reporter access the application.
+2. System extracts the data from world database.
+3. System supplies the data to the Country Reporter.
 
 ## EXTENSIONS
 1. **If the database is inaccessible**:

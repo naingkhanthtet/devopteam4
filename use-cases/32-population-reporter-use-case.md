@@ -1,4 +1,4 @@
-# USE CASE: 31. Produce a report of world Population percentage within the language speakers in the descending order of population.
+# USE CASE: 32. Produce a report of world Population percentage within the language speakers in the descending order of population.
 
 ## CHARACTERISTIC INFORMATION
 
@@ -9,7 +9,7 @@ As a *Population Reporter*, I want *to generate a report of the number of people
 World Population Reporting System
 
 ### Level
-subfunction
+Primary task.
 
 ### Preconditions
 The World Database contains Language, Percentage data.
@@ -24,13 +24,12 @@ No report is produced.
 Population Reporter
 
 ### Trigger
-A request for the population percentage within the language speakers.
+Organization request the Population reporter to export a report of world Population percentage within the language speakers in the descending order of population.
 
 ## MAIN SUCCESS SCENARIO
-1. Organization request a report of language speakers population percentage.
-2. Population Reporter extracts population of a language speakers.
-3. Population Reporter sort the population.
-4. Population Reporter provides the report to the organization.
+1. Population reporter access the application.
+2. System extracts world Population percentage within the language speakers in the descending order of population. from the database.
+3. System supplies the data to the Population Reporter.
 
 ## EXTENSIONS
 1. **If the language, percentage does not exist**:
