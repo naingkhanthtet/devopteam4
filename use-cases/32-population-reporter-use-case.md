@@ -9,7 +9,7 @@ As a *Population Reporter*, I want *to generate a report of the number of people
 World Population Reporting System
 
 ### Level
-subfunction
+Primary task.
 
 ### Preconditions
 The World Database contains Language, Percentage data.
