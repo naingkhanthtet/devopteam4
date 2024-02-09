@@ -13,6 +13,15 @@ public class AppIntegrationTest {
     static MYSQLConnection sql;
     static Connection con;
 
+    // defining continent name
+    String continentName = "Asia";
+    // defining region name
+    String regionName = "Caribbean";
+    // defining country name
+    String countryName = "Myanmar";
+    // defining district name
+    String districtName = "Kabol";
+
     @BeforeAll
     static void init() {
         sql = new MYSQLConnection();
@@ -24,7 +33,155 @@ public class AppIntegrationTest {
         sql.disconnect();
     }
 
-    /**
+    /*
+     * Country report testing methods
+     */
+    @Test
+    void testSortCountryByPopulation() {
+        CountryReporter countryReporter = new CountryReporter();
+        // Retrieve a list of countries sorted by population
+        List<Country> countryList = countryReporter.sortCountryByPopulation(con);
+
+        assertNotNull(countryList, "Country list should not be null");
+
+        // verifying population data is sorted in descending order
+        // holding maximum integer value for comparison
+        int prevPopulation = Integer.MAX_VALUE;
+        for (Country country : countryList) {
+            // take current population at each iteration to compare with previous maximum value
+            int currentPopulation = country.getPopulation();
+            // comparing current and previous population
+            assertTrue(currentPopulation <= prevPopulation, "population should be sorted in descending order");
+            prevPopulation = currentPopulation;
+        }
+    }
+
+    @Test
+    void testSortCountryByPopulationBasedOnContinent() {
+        CountryReporter countryReporter = new CountryReporter();
+        // interation count
+        int iterationCount = 0;
+        // Retrieve a list of cities sorted by population on continent
+        List<Country> countryList = countryReporter.sortCountryByPopulationBasedOnContinent(con, continentName);
+
+        assertNotNull(countryList, "Country list should not be null");
+
+        // verifying population data is sorted in descending order
+        // holding maximum integer value for comparison
+        int prevPopulation = Integer.MAX_VALUE;
+        for (Country country : countryList) {
+            // take current population at each iteration to compare with previous maximum value
+            int currentPopulation = country.getPopulation();
+            // comparing current and previous population
+            assertTrue(currentPopulation <= prevPopulation, "population should be sorted in descending order");
+            prevPopulation = currentPopulation;
+
+            assertNotNull(country.getName(), "Country name should not be null");
+            assertNotNull(country.getContinent(), "Continent name should not be null");
+            assertNotNull(country.getRegion(), "Region name should not be null");
+            assertEquals(country.getContinent(), continentName, "selected continent should be chosen");
+
+            iterationCount++;
+            // only want to loop a list a bit
+            if (iterationCount > 3) break;
+        }
+    }
+
+    @Test
+    void testSortCountryByPopulationBasedOnRegion() {
+        CountryReporter countryReporter = new CountryReporter();
+        // interation count
+        int iterationCount = 0;
+        // Retrieve a list of cities sorted by population on continent
+        List<Country> countryList = countryReporter.sortCountryByPopulationBasedOnRegion(con, regionName);
+
+        assertNotNull(countryList, "Country list should not be null");
+
+        // verifying population data is sorted in descending order
+        // holding maximum integer value for comparison
+        int prevPopulation = Integer.MAX_VALUE;
+        for (Country country : countryList) {
+            // take current population at each iteration to compare with previous maximum value
+            int currentPopulation = country.getPopulation();
+            // comparing current and previous population
+            assertTrue(currentPopulation <= prevPopulation, "population should be sorted in descending order");
+            prevPopulation = currentPopulation;
+
+            assertNotNull(country.getName(), "Country name should not be null");
+            assertNotNull(country.getContinent(), "Continent name should not be null");
+            assertNotNull(country.getRegion(), "Region name should not be null");
+            assertEquals(country.getRegion(), regionName, "selected region should be chosen");
+
+            iterationCount++;
+            // only want to loop a list a bit
+            if (iterationCount > 3) break;
+        }
+    }
+
+    @Test
+    void testGetTopNPopulatedCountries() {
+        // defining top N size
+        int topN = 2;
+        CountryReporter countryReporter = new CountryReporter();
+
+        // retrieves a list of top N populated countries in the world
+        List<Country> countryList = countryReporter.getTopNPopulatedCountries(con, topN);
+
+        // returned country list should not be null
+        assertNotNull(countryList, "Country list should not be null");
+
+        for (Country country : countryList) {
+            // each row's value should not be null
+            assertNotNull(country.getName(), "Country name should not be null");
+            assertNotNull(country.getContinent(), "Continent name should not be null");
+            assertNotNull(country.getRegion(), "Region name should not be null");
+        }
+    }
+
+    @Test
+    void testGetTopNPopulatedCountriesInContinent() {
+        // defining top N size
+        int topN = 2;
+        CountryReporter countryReporter = new CountryReporter();
+
+        // retrieves a list of top N populated countries in the continent
+        List<Country> countryList = countryReporter.getTopNPopulatedCountriesInContinent(con, continentName, topN);
+
+        // returned country list should not be null
+        assertNotNull(countryList, "Country list should not be null");
+
+        for (Country country : countryList) {
+            // each row's value should not be null
+            assertNotNull(country.getName(), "Country name should not be null");
+            assertNotNull(country.getContinent(), "Continent name should not be null");
+            assertNotNull(country.getRegion(), "Region name should not be null");
+            assertEquals(country.getContinent(), continentName, "selected continent should be provided");
+        }
+    }
+
+    @Test
+    void testGetTopNPopulatedCountriesInRegion() {
+        // defining top N size
+        int topN = 2;
+        CountryReporter countryReporter = new CountryReporter();
+
+        // retrieves a list of top N populated countries in the region
+        List<Country> countryList = countryReporter.getTopNPopulatedCountriesInRegion(con, regionName, topN);
+
+        // returned country list should not be null
+        assertNotNull(countryList, "Country list should not be null");
+
+        for (Country country : countryList) {
+            // each row's value should not be null
+            assertNotNull(country.getName(), "Country name should not be null");
+            assertNotNull(country.getContinent(), "Continent name should not be null");
+            assertNotNull(country.getRegion(), "Region name should not be null");
+            assertEquals(country.getRegion(), regionName, "selected region should be provided");
+        }
+    }
+
+
+    /*
      * city report testing methods
      */
     @Test
@@ -51,8 +208,6 @@ public class AppIntegrationTest {
 
     @Test
     void testGetTopNPopulatedCitiesInCountry() {
-        // defining country name
-        String countryName = "Myanmar";
         // defining top N size
         int topN = 2;
         CityReporter cityReporter = new CityReporter();
@@ -78,8 +233,6 @@ public class AppIntegrationTest {
 
     @Test
     void testGetTopNPopulatedCitiesInDistrict() {
-        // defining the district name
-        String districtName = "Kabol";
         // defining top N size
         int topN = 1;
         CityReporter cityReporter = new CityReporter();
@@ -104,8 +257,6 @@ public class AppIntegrationTest {
 
     @Test
     void testGetTopNPopulatedCitiesInRegion() {
-        // defining the region name
-        String regionName = "Caribbean";
         // defining top N size
         int topN = 1;
         CityReporter cityReporter = new CityReporter();
@@ -129,8 +280,6 @@ public class AppIntegrationTest {
 
     @Test
     void testGetTopNPopulatedCitiesInContinent() {
-        // defining the asia name
-        String continentName = "Asia";
         // defining top N size
         int topN = 1;
         CityReporter cityReporter = new CityReporter();
@@ -175,8 +324,6 @@ public class AppIntegrationTest {
     @Test
     void testSortCityByPopulationBasedOnContinent() {
         CityReporter cityReporter = new CityReporter();
-        // defining continent name
-        String continentName = "Asia";
         // interation count
         int iterationCount = 0;
         // Retrieve a list of cities sorted by population on continent
@@ -207,8 +354,6 @@ public class AppIntegrationTest {
     @Test
     void testSortCityByPopulationBasedOnRegion() {
         CityReporter cityReporter = new CityReporter();
-        // defining region name
-        String regionName = "Caribbean";
         // interation count
         int iterationCount = 0;
         // Retrieve a list of cities sorted by population on a region
@@ -239,8 +384,6 @@ public class AppIntegrationTest {
     @Test
     void testSortCityByPopulationBasedOnCountry() {
         CityReporter cityReporter = new CityReporter();
-        // defining country name
-        String countryName = "Myanmar";
         // interation count
         int iterationCount = 0;
         // Retrieve a list of cities sorted by population on a country
@@ -273,8 +416,6 @@ public class AppIntegrationTest {
     @Test
     void testSortCityByPopulationBasedOnDistrict() {
         CityReporter cityReporter = new CityReporter();
-        // defining district name
-        String districtName = "Kabol";
         // interation count
         int iterationCount = 0;
         // Retrieve a list of cities sorted by population on a district
