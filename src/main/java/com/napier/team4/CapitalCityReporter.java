@@ -9,7 +9,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The CapitalCityReporter class is responsible for retrieving and displaying
+ * information about capital cities sorted by population.
+ */
 public class CapitalCityReporter {
+
+    /**
+     * Retrieves a list of CapitalCity objects sorted by population.
+     *
+     * @param con The database connection.
+     * @return A list of CapitalCity objects sorted by population.
+     */
     public List<CapitalCity> sortCapitalCityByPopulation(@NotNull Connection con) {
         List<CapitalCity> capitalCities = new ArrayList<>();
         try {
@@ -41,12 +52,24 @@ public class CapitalCityReporter {
         }
     }
 
+    /**
+     * Handles SQL exceptions by printing the error message and throwing a runtime exception.
+     *
+     * @param e The SQL exception to handle.
+     */
     private void handleSQLException(@NotNull SQLException e) {
         System.out.println(e.getMessage());
         System.out.println("Failed to get capital city information");
         throw new RuntimeException(e);
     }
 
+    /**
+     * Creates a CapitalCity object from a ResultSet.
+     *
+     * @param rset The ResultSet containing the capital city information.
+     * @return A CapitalCity object created from the ResultSet.
+     * @throws SQLException If an SQL exception occurs.
+     */
     private @NotNull CapitalCity createCapitalCityFromResultSet(@NotNull ResultSet rset) throws SQLException {
         String cityName = rset.getString("CityName");
         String countryName = rset.getString("CountryName");
@@ -55,6 +78,12 @@ public class CapitalCityReporter {
         return new CapitalCity(cityName, countryName, population);
     }
 
+    /**
+     * Displays information about capital cities in a formatted table.
+     *
+     * @param capitalCityList The list of CapitalCity objects to display.
+     * @param title           The title for the table.
+     */
     public void displayCapitalCityInfo(List<CapitalCity> capitalCityList, String title) {
         // Check capitalCityList and title is not null
         if (capitalCityList == null || title == null) {
