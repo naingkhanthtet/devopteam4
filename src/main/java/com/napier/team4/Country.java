@@ -6,7 +6,7 @@ public class Country {
     private String continent;
     private String region;
     private Integer population;
-    private Integer capital;
+    private String capital;
 
     /**
      * Constructs a new Country object with default values.
@@ -24,7 +24,7 @@ public class Country {
      * @param population the population of the country
      * @param capital    the capital city code of the country
      */
-    public Country(String code, String name, String continent, String region, Integer population, Integer capital) {
+    public Country(String code, String name, String continent, String region, Integer population, String capital) {
         this.code = code;
         this.name = name;
         this.continent = continent;
@@ -73,11 +73,11 @@ public class Country {
         this.population = population;
     }
 
-    public Integer getCapital() {
+    public String getCapital() {
         return capital;
     }
 
-    public void setCapital(Integer capital) {
+    public void setCapital(String capital) {
         this.capital = capital;
     }
 
