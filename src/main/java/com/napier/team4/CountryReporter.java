@@ -263,8 +263,8 @@ public class CountryReporter {
      * @param countryList The list of countries to display.
      * @param title       The title to display before the table.
      */
-    public void displayCountryInfo( List<Country> countryList, String title) {
-        // Check cityList is not null
+    public void displayCountryInfo(List<Country> countryList, String title) {
+        // Check cityList and title is not null
         if (countryList == null || title == null) {
             System.out.println("No countries or no title information provided.");
             return;

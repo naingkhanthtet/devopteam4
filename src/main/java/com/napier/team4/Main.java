@@ -91,6 +91,13 @@ public class Main {
         cityReporter.displayCityInfo(topNPopulatedCitiesInCountry, String.format("Top %d Populated Cities In %s", topN, country));
         cityReporter.displayCityInfo(topNPopulatedCitiesInDistrict, String.format("Top %d Populated Cities In %s", topN, district));
 
+        CapitalCityReporter capitalCityReporter = new CapitalCityReporter();
+        // For task 17
+        List<CapitalCity> sortCapitalCityByPopulation= capitalCityReporter.sortCapitalCityByPopulation(con);
+
+        capitalCityReporter.displayCapitalCityInfo(sortCapitalCityByPopulation, "Sorted Capital Cities By Population");
+
+
         mysqlCon.disconnect();
     }
 }
