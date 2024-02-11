@@ -51,6 +51,48 @@ public class CapitalCityReporter {
             return null;
         }
     }
+    /**
+     * Retrieves a list of CapitalCity objects representing all capital cities in a continent,
+     * organized by largest population to smallest.
+     *
+     * @param con       The database connection.
+     * @param continent The continent for which capital cities are to be retrieved.
+     * @return A list of CapitalCity objects sorted by population in descending order.
+     */
+    public List<CapitalCity> sortCapitalCityByPopulationInContinent(@NotNull Connection con, String continent) {
+        List<CapitalCity> capitalCities = new ArrayList<>();
+        try {
+            // Use a PreparedStatement to prevent SQL injection
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.Population " +
+                    "FROM city " +
+                    "JOIN country ON city.CountryCode = country.Code " +
+                    "WHERE city.ID = country.Capital AND country.Continent = ? " +
+                    "ORDER BY Population DESC";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            // Set the parameter for the continent
+            pstmt.setString(1, continent);
+
+            // Execute SQL statement
+            ResultSet rset = pstmt.executeQuery();
+            // Iterate through the result set and create CapitalCity objects
+            while (rset.next()) {
+                CapitalCity capitalCity = createCapitalCityFromResultSet(rset);
+                capitalCities.add(capitalCity);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return capitalCities;
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
+
 
     /**
      * Handles SQL exceptions by printing the error message and throwing a runtime exception.
