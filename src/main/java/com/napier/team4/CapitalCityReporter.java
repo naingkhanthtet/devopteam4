@@ -128,6 +128,47 @@ public class CapitalCityReporter {
             return null;
         }
     }
+    /**
+     * Retrieves the top N populated CapitalCity objects representing capital cities in the world,
+     * organized by largest population to smallest.
+     *
+     * @param con The database connection.
+     * @param topN   The number of top populated capital cities to retrieve.
+     * @return A list of CapitalCity objects sorted by population in descending order, limited to the top N.
+     */
+    public List<CapitalCity> getTopNPopulatedCapitalCities(@NotNull Connection con, int topN) {
+        List<CapitalCity> capitalCities = new ArrayList<>();
+        try {
+            // Use a PreparedStatement to prevent SQL injection
+            String strSelect = "SELECT city.Name as CityName, country.Name as CountryName, city.Population " +
+                    "FROM city " +
+                    "JOIN country ON city.CountryCode = country.Code " +
+                    "WHERE city.ID = country.Capital " +
+                    "ORDER BY Population DESC " +
+                    "LIMIT ?";
+
+            PreparedStatement pstmt = con.prepareStatement(strSelect);
+            // Set the parameter for the limit (top N)
+            pstmt.setInt(1, topN);
+
+            // Execute SQL statement
+            ResultSet rset = pstmt.executeQuery();
+            // Iterate through the result set and create CapitalCity objects
+            while (rset.next()) {
+                CapitalCity capitalCity = createCapitalCityFromResultSet(rset);
+                capitalCities.add(capitalCity);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            pstmt.close();
+
+            return capitalCities;
+        } catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
 
 
 
