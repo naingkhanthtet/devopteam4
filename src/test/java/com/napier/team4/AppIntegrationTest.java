@@ -21,6 +21,8 @@ public class AppIntegrationTest {
     String countryName = "Myanmar";
     // defining district name
     String districtName = "Kabol";
+    // defining iteration count
+    int iterationCount = 0;
 
     @BeforeAll
     static void init() {
@@ -59,8 +61,6 @@ public class AppIntegrationTest {
     @Test
     void testSortCountryByPopulationBasedOnContinent() {
         CountryReporter countryReporter = new CountryReporter();
-        // interation count
-        int iterationCount = 0;
         // Retrieve a list of cities sorted by population on continent
         List<Country> countryList = countryReporter.sortCountryByPopulationBasedOnContinent(con, continentName);
 
@@ -83,15 +83,13 @@ public class AppIntegrationTest {
 
             iterationCount++;
             // only want to loop a list a bit
-            if (iterationCount > 3) break;
+            if (iterationCount > 5) break;
         }
     }
 
     @Test
     void testSortCountryByPopulationBasedOnRegion() {
         CountryReporter countryReporter = new CountryReporter();
-        // interation count
-        int iterationCount = 0;
         // Retrieve a list of cities sorted by population on continent
         List<Country> countryList = countryReporter.sortCountryByPopulationBasedOnRegion(con, regionName);
 
@@ -114,7 +112,7 @@ public class AppIntegrationTest {
 
             iterationCount++;
             // only want to loop a list a bit
-            if (iterationCount > 3) break;
+            if (iterationCount > 5) break;
         }
     }
 
@@ -324,8 +322,6 @@ public class AppIntegrationTest {
     @Test
     void testSortCityByPopulationBasedOnContinent() {
         CityReporter cityReporter = new CityReporter();
-        // interation count
-        int iterationCount = 0;
         // Retrieve a list of cities sorted by population on continent
         List<City> cityList = cityReporter.sortCityByPopulationBasedOnContinent(con, continentName);
 
@@ -347,15 +343,13 @@ public class AppIntegrationTest {
 
             iterationCount++;
             // only want to loop a list a bit
-            if (iterationCount > 3) break;
+            if (iterationCount > 5) break;
         }
     }
 
     @Test
     void testSortCityByPopulationBasedOnRegion() {
         CityReporter cityReporter = new CityReporter();
-        // interation count
-        int iterationCount = 0;
         // Retrieve a list of cities sorted by population on a region
         List<City> cityList = cityReporter.sortCityByPopulationBasedOnRegion(con, regionName);
 
@@ -377,15 +371,13 @@ public class AppIntegrationTest {
 
             iterationCount++;
             // only want to loop a list a bit
-            if (iterationCount > 3) break;
+            if (iterationCount > 5) break;
         }
     }
 
     @Test
     void testSortCityByPopulationBasedOnCountry() {
         CityReporter cityReporter = new CityReporter();
-        // interation count
-        int iterationCount = 0;
         // Retrieve a list of cities sorted by population on a country
         List<City> cityList = cityReporter.sortCityByPopulationInCountry(con, countryName);
 
@@ -409,15 +401,13 @@ public class AppIntegrationTest {
 
             iterationCount++;
             // only want to loop a list a bit
-            if (iterationCount > 3) break;
+            if (iterationCount > 5) break;
         }
     }
 
     @Test
     void testSortCityByPopulationBasedOnDistrict() {
         CityReporter cityReporter = new CityReporter();
-        // interation count
-        int iterationCount = 0;
         // Retrieve a list of cities sorted by population on a district
         List<City> cityList = cityReporter.sortCityByPopulationInDistrict(con, districtName);
 
@@ -441,7 +431,149 @@ public class AppIntegrationTest {
 
             iterationCount++;
             // only want to loop a list a bit
-            if (iterationCount > 3) break;
+            if (iterationCount > 5) break;
+        }
+    }
+
+    /*
+     * capital city report testing methods
+     */
+    @Test
+    void testSortCapitalCityByPopulation() {
+        CapitalCityReporter capitalCityReporter = new CapitalCityReporter();
+        // Retrieve a list of cities sorted by population on a district
+        List<CapitalCity> cityList = capitalCityReporter.sortCapitalCityByPopulation(con);
+
+        assertNotNull(cityList, "Capital City list should not be null");
+
+        // verifying population data is sorted in descending order
+        // holding maximum integer value for comparison
+        int prevPopulation = Integer.MAX_VALUE;
+        for (CapitalCity city : cityList) {
+            // take current population at each iteration to compare with previous maximum value
+            int currentPopulation = city.getPopulation();
+            // comparing current and previous population
+            assertTrue(currentPopulation <= prevPopulation, "population should be sorted in descending order");
+            prevPopulation = currentPopulation;
+        }
+    }
+
+    @Test
+    void testSortCapitalCityByPopulationBasedOnContinent() {
+        CapitalCityReporter capitalCityReporter = new CapitalCityReporter();
+        // Retrieve a list of capital cities sorted by population on a continent
+        List<CapitalCity> capitalCityList = capitalCityReporter.sortCapitalCityByPopulationInContinent(con, continentName);
+
+        assertNotNull(capitalCityList, "Capital City list should not be null");
+
+        // verifying population data is sorted in descending order
+        // holding maximum integer value for comparison
+        int prevPopulation = Integer.MAX_VALUE;
+        for (CapitalCity cap_city : capitalCityList) {
+            // take current population at each iteration to compare with previous maximum value
+            int currentPopulation = cap_city.getPopulation();
+            // comparing current and previous population
+            assertTrue(currentPopulation <= prevPopulation, "population should be sorted in descending order");
+            prevPopulation = currentPopulation;
+
+            assertNotNull(cap_city.getName(), "City name should not be null");
+            assertNotNull(cap_city.getCountry(), "Country name should not be null");
+
+            iterationCount++;
+            // only want to loop a list a bit
+            if (iterationCount > 5) break;
+        }
+    }
+
+    @Test
+    void testSortCapitalCityByPopulationBasedOnRegion() {
+        CapitalCityReporter capitalCityReporter = new CapitalCityReporter();
+        // Retrieve a list of cities sorted by population on a district
+        List<CapitalCity> capitalCityList = capitalCityReporter.sortCapitalCityByPopulationInRegion(con, regionName);
+
+        assertNotNull(capitalCityList, "Capital City list should not be null");
+
+        // verifying population data is sorted in descending order
+        // holding maximum integer value for comparison
+        int prevPopulation = Integer.MAX_VALUE;
+        for (CapitalCity cap_city : capitalCityList) {
+            // take current population at each iteration to compare with previous maximum value
+            int currentPopulation = cap_city.getPopulation();
+            // comparing current and previous population
+            assertTrue(currentPopulation <= prevPopulation, "population should be sorted in descending order");
+            prevPopulation = currentPopulation;
+
+            assertNotNull(cap_city.getName(), "Capital City name should not be null");
+            assertNotNull(cap_city.getCountry(), "Country name should not be null");
+
+            iterationCount++;
+            // only want to loop a list a bit
+            if (iterationCount > 5) break;
+        }
+    }
+
+    @Test
+    void testGetTopNPopulatedCapitalCities() {
+        // defining top N size
+        int topN = 2;
+        CapitalCityReporter capitalCityReporter = new CapitalCityReporter();
+
+        // retrieves a list of top N populated capital cities in the world
+        List<CapitalCity> capcityList = capitalCityReporter.getTopNPopulatedCapitalCities(con, topN);
+
+        // returned capital city list should not be null
+        assertNotNull(capcityList, "Capital City list should not be null");
+
+        for (CapitalCity city : capcityList) {
+            // each row's value should not be null
+            assertNotNull(city.getName(), "Capital City name should not be null");
+            assertNotNull(city.getCountry(), "Country name should not be null");
+            // returned population should be greater than zero
+            assertTrue(city.getPopulation() >= 0, "City population should have value");
+        }
+    }
+
+    @Test
+    void testGetTopNPopulatedCapitalCitiesInRegion() {
+        // defining top N size
+        int topN = 1;
+        CapitalCityReporter capitalCityReporter = new CapitalCityReporter();
+
+        // retrieves a list of top N populated capital cities in the specified region
+        List<CapitalCity> capcityList = capitalCityReporter.getTopNPopulatedCapitalCitiesInRegion(con, regionName, topN);
+
+        // returned capital city list should not be null
+        assertNotNull(capcityList, "Capital City list should not be null");
+
+        for (CapitalCity city : capcityList) {
+            // each row's value should not be null
+            assertNotNull(city.getName(), "City name should not be null");
+            assertNotNull(city.getCountry(), "Country name should not be null");
+
+            // returned population should be greater than zero
+            assertTrue(city.getPopulation() >= 0, "Capital City population should have value");
+        }
+    }
+
+    @Test
+    void testGetTopNPopulatedCapitalCitiesInContinent() {
+        // defining top N size
+        int topN = 1;
+        CapitalCityReporter capitalCityReporter = new CapitalCityReporter();
+
+        // retrieves a list of top N populated cities in the specified continent
+        List<CapitalCity> capcityList = capitalCityReporter.getTopNPopulatedCapitalCitiesInContinent(con, continentName, topN);
+
+        // returned capital city list should not be null
+        assertNotNull(capcityList, "Capital City list should not be null");
+
+        for (CapitalCity city : capcityList) {
+            // each row's value should not be null
+            assertNotNull(city.getName(), "City name should not be null");
+            assertNotNull(city.getCountry(), "Country name should not be null");
+
+            // returned population should be greater than zero
+            assertTrue(city.getPopulation() >= 0, "Capital City population should have value");
         }
     }
 }
