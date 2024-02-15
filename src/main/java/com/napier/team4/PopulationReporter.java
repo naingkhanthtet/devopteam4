@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PopulationReporter {
@@ -124,14 +125,19 @@ public class PopulationReporter {
                     "JOIN " +
                     "country c ON cl.CountryCode = c.Code " +
                     "GROUP BY " +
-                    "cl.Language";
+                    "cl.Language " +
+                    "ORDER BY " +
+                    "TotalPopulation DESC";  // Sort by TotalPopulation in descending order
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(query);
+            List<String> desiredLanguages = Arrays.asList("Chinese", "English", "Hindi", "Spanish", "Arabic");
 
             while (rset.next()) {
                 Language language = createLanguageFromResultSet(rset);
-                languageList.add(language);
+                if (desiredLanguages.contains(language.getLanguage())) {
+                    languageList.add(language);
+                }
             }
 
             // Close the ResultSet and Statement
