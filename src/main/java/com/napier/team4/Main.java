@@ -112,17 +112,7 @@ public class Main {
         capitalCityReporter.displayCapitalCityInfo(topNPopulatedCapitalCitiesInContinent, String.format("Top %d Populated Capital Cities In %s", topN, continent));
         capitalCityReporter.displayCapitalCityInfo(topNPopulatedCapitalCitiesInRegion, String.format("Top %d Populated Cities In %s", topN, region));
 
-        PopulationReporter populationReporter = new PopulationReporter();
-        // For task 23
-        List<Population> populationStaticForContinent = populationReporter.getPopulationStaticForContinent(con);
-        // For task 24
-        List<Population> populationStatisticsForRegion = populationReporter.getPopulationStatisticsForRegion(con);
-        // For task 25
-        List<Population> populationStatisticsForCountry = populationReporter.getPopulationStatisticsForCountry(con);
 
-        populationReporter.displayPopulationInfo(populationStaticForContinent, "Population Statics For Continent");
-        populationReporter.displayPopulationInfo(populationStatisticsForRegion, "Population Statics For Region");
-        populationReporter.displayPopulationInfo(populationStatisticsForCountry, "Population Statics For Country");
 
 
         mysqlCon.disconnect();
