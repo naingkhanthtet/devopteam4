@@ -143,12 +143,16 @@ public class Main {
         // for task 31
         long populationOfCity = populationReporter.getPopulationOfCity(con, city);
 
+        List<Language> populationByLanguage = populationReporter.getPopulationByLanguage(con);
+
         populationReporter.displayAdditionalInfo(populationOfTheWorld, "Population of the world");
         populationReporter.displayAdditionalInfo(populationOfContinent, String.format("Population of %s", continent));
         populationReporter.displayAdditionalInfo(populationOfRegion, String.format("Population of %s", region));
         populationReporter.displayAdditionalInfo(populationOfCountryByName, String.format("Population of %s", country));
         populationReporter.displayAdditionalInfo(populationOfDistrict, String.format("Population of %s", district));
         populationReporter.displayAdditionalInfo(populationOfCity, String.format("Population of %s", city));
+
+        populationReporter.displayPopulationByLanguage(populationByLanguage, "Population by Language");
 
         mysqlCon.disconnect();
     }

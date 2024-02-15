@@ -110,6 +110,40 @@ public class PopulationReporter {
         }
     }
 
+    public List<Language> getPopulationByLanguage(@NotNull Connection con){
+        List<Language> languageList = new ArrayList<>();
+        try {
+            Statement stmt = con.createStatement();
+            String query = "SELECT " +
+                    "cl.Language AS Language, " +
+                    "SUM(c.Population) AS TotalPopulation, " +
+                    "ROUND((SUM(c.Population) / (SELECT SUM(Population) FROM country)) * 100, 2) AS PercentageOfWorldPopulation, " +
+                    "100 - ROUND((SUM(c.Population) / (SELECT SUM(Population) FROM country)) * 100, 2) AS PercentageNotInWorld " +
+                    "FROM " +
+                    "countrylanguage cl " +
+                    "JOIN " +
+                    "country c ON cl.CountryCode = c.Code " +
+                    "GROUP BY " +
+                    "cl.Language";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(query);
+
+            while (rset.next()) {
+                Language language = createLanguageFromResultSet(rset);
+                languageList.add(language);
+            }
+
+            // Close the ResultSet and Statement
+            rset.close();
+            stmt.close();
+            return languageList;
+        }catch (SQLException e) {
+            handleSQLException(e);
+            return null;
+        }
+    }
+
     public long getPopulationOfTheWorld(@NotNull Connection con) {
         try {
             Statement stmt = con.createStatement();
@@ -272,6 +306,28 @@ public class PopulationReporter {
         population.setPercentageNotInCities(rset.getDouble("PercentageNotInCities"));
         return population;
     }
+
+    private @NotNull Language createLanguageFromResultSet(@NotNull ResultSet rset) throws SQLException {
+        Language language = new Language();
+        language.setLanguage(rset.getString("Language"));
+        language.setTotalPopulation(rset.getLong("TotalPopulation"));
+        language.setPercentageInWorld(rset.getDouble("PercentageOfWorldPopulation"));
+        language.setGetPercentageNotInWorld(rset.getDouble("PercentageNotInWorld"));
+
+        return language;
+    }
+
+    public void displayPopulationByLanguage(List<Language> languageList, String title){
+        if (languageList == null || title == null){
+            System.out.println("No languageLists or no title information provided.");
+            return;
+        }
+        System.out.println(title);
+        for (Language language : languageList) {
+            System.out.println(language);
+        }
+    }
+
 
     public void displayPopulationInfo(List<Population> populationList, String title) {
         // Check populationList is not null
