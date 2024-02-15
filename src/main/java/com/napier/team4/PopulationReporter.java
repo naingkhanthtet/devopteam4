@@ -328,10 +328,17 @@ public class PopulationReporter {
             System.out.println("No languageLists or no title information provided.");
             return;
         }
-        System.out.println(title);
+        System.out.println();
+        String titleAlignment = " %-20s %-20s %-30s %-30s %n";
+        System.out.format(titleAlignment, "Language", "Total Population", "Percentage In World", "Percentage Not In Word");
+        String bodyAlignment = " %-20s %-20d %-30.2f %-30.2f %n";
         for (Language language : languageList) {
-            System.out.println(language);
+            if (language == null) {
+                continue;
+            }
+            System.out.format(bodyAlignment, language.getLanguage(), language.getTotalPopulation(), language.getPercentageInWorld(), language.getGetPercentageNotInWorld());
         }
+        System.out.println();
     }
 
 
@@ -341,10 +348,16 @@ public class PopulationReporter {
             System.out.println("No populations or no title information provided.");
             return;
         }
-        System.out.println(title);
+        String titleAlignment = " %-48s %-20s %-25s %-30s %-25s %-30s %n";
+        System.out.format(titleAlignment, "Location Name", "Total Population", "Population In Location", "Population Not In Location", "Percentage In Location", "Percentage Not In Location");
+        String bodyAlignment = " %-48s %-30d %-25d %-30s %-25.2f %-30.2f %n";
         for (Population population : populationList) {
-            System.out.println(population);
+            if (population == null) {
+                continue;
+            }
+            System.out.format(bodyAlignment, population.getLocationName(), population.getTotalPopulation(), population.getPopulationInCities(), population.getPopulationNotInCities(), population.getPercentageInCities(), population.getPercentageNotInCities());
         }
+        System.out.println();
     }
 
     public void displayAdditionalInfo(long population, String title) {
