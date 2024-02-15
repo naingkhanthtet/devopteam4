@@ -27,6 +27,7 @@ public class Main {
         String region = "Caribbean"; // local variable for getting countries from region
         String country = "Myanmar"; // local variable for getting cities from country
         String district = "Kabol"; // local variable for getting cities from district
+        String city = "Taunggyi (Taunggye)";
         // Connect to MYSQL
         MYSQLConnection mysqlCon = new MYSQLConnection();
         Connection con = null;
@@ -90,6 +91,40 @@ public class Main {
         cityReporter.displayCityInfo(topNPopulatedCitiesInRegion, String.format("Top %d Populated Cities In %s", topN, region));
         cityReporter.displayCityInfo(topNPopulatedCitiesInCountry, String.format("Top %d Populated Cities In %s", topN, country));
         cityReporter.displayCityInfo(topNPopulatedCitiesInDistrict, String.format("Top %d Populated Cities In %s", topN, district));
+
+        PopulationReporter populationReporter = new PopulationReporter();
+        // For task 23
+        List<Population> populationStaticForContinent = populationReporter.getPopulationStaticForContinent(con);
+        // For task 24
+        List<Population> populationStatisticsForRegion = populationReporter.getPopulationStatisticsForRegion(con);
+        // For task 25
+        List<Population> populationStatisticsForCountry = populationReporter.getPopulationStatisticsForCountry(con);
+
+        populationReporter.displayPopulationInfo(populationStaticForContinent, "Population Statics For Continent");
+        populationReporter.displayPopulationInfo(populationStatisticsForRegion, "Population Statics For Region");
+        populationReporter.displayPopulationInfo(populationStatisticsForCountry, "Population Statics For Country");
+
+        // Additional Info
+        System.out.println("Additional Information");
+        // For task 26
+        long populationOfTheWorld = populationReporter.getPopulationOfTheWorld(con);
+        // for task 27
+        long populationOfContinent = populationReporter.getPopulationOfContinent(con, continent);
+        // for task 28
+        long populationOfRegion = populationReporter.getPopulationOfRegion(con, region);
+        // for task 29
+        long populationOfCountryByName = populationReporter.getPopulationOfCountryByName(con, country);
+        // for task 30
+        long populationOfDistrict = populationReporter.getPopulationOfDistrict(con, district);
+        // for task 31
+        long populationOfCity = populationReporter.getPopulationOfCity(con, city);
+
+        populationReporter.displayAdditionalInfo(populationOfTheWorld, "Population of the world");
+        populationReporter.displayAdditionalInfo(populationOfContinent, String.format("Population of %s", continent));
+        populationReporter.displayAdditionalInfo(populationOfRegion, String.format("Population of %s", region));
+        populationReporter.displayAdditionalInfo(populationOfCountryByName, String.format("Population of %s", country));
+        populationReporter.displayAdditionalInfo(populationOfDistrict, String.format("Population of %s", district));
+        populationReporter.displayAdditionalInfo(populationOfCity, String.format("Population of %s", city));
 
         mysqlCon.disconnect();
     }
