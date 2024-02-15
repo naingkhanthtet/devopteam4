@@ -52,12 +52,12 @@ public class Main {
         // For task 6
         List<Country> topNPopulatedCountriesInRegion = countryReporter.getTopNPopulatedCountriesInRegion(con, region, topN);
 
-//        countryReporter.displayCountryInfo(sortedCountries, "Sorted Countries By Population");
-//        countryReporter.displayCountryInfo(sortedCountriesInContinent, String.format("Sorted Countries By Population In %s", continent));
-//        countryReporter.displayCountryInfo(sortedCountriesInRegion, String.format("Sorted Countries By Population In %s", region));
-//        countryReporter.displayCountryInfo(topNPopulatedCountries, String.format("Top %d Populated Countries", topN));
-//        countryReporter.displayCountryInfo(topNPopulatedCountriesInContinent, String.format("Top %d Populated Countries In %s", topN, continent));
-//        countryReporter.displayCountryInfo(topNPopulatedCountriesInRegion, String.format("Top %d Populated Countries In %s", topN, region));
+        countryReporter.displayCountryInfo(sortedCountries, "Sorted Countries By Population");
+        countryReporter.displayCountryInfo(sortedCountriesInContinent, String.format("Sorted Countries By Population In %s", continent));
+        countryReporter.displayCountryInfo(sortedCountriesInRegion, String.format("Sorted Countries By Population In %s", region));
+        countryReporter.displayCountryInfo(topNPopulatedCountries, String.format("Top %d Populated Countries", topN));
+        countryReporter.displayCountryInfo(topNPopulatedCountriesInContinent, String.format("Top %d Populated Countries In %s", topN, continent));
+        countryReporter.displayCountryInfo(topNPopulatedCountriesInRegion, String.format("Top %d Populated Countries In %s", topN, region));
 
         CityReporter cityReporter = new CityReporter();
         // For task 7
@@ -81,16 +81,16 @@ public class Main {
         // For task 16
         List<City> topNPopulatedCitiesInDistrict = cityReporter.getTopNPopulatedCitiesInDistrict(con, district, topN);
 
-//        cityReporter.displayCityInfo(sortCityByPopulation, "Sorted Cities By Population");
-//        cityReporter.displayCityInfo(sortCityByPopulationBasedOnContinent, String.format("Sorted Cities By Population In %s", continent));
-//        cityReporter.displayCityInfo(sortCityByPopulationBasedOnRegion, String.format("Sorted Cities By Population In %s", region));
-//        cityReporter.displayCityInfo(sortCityByPopulationInCountry, String.format("Sorted Cities By Population In %s", country));
-//        cityReporter.displayCityInfo(sortCityByPopulationInDistrict, String.format("Sorted Cities By Population In %s", district));
-//        cityReporter.displayCityInfo(topNPopulatedCities, String.format("Top %d Populated Cities", topN));
-//        cityReporter.displayCityInfo(topNPopulatedCitiesInContinent, String.format("Top %d Populated Cities In %s", topN, continent));
-//        cityReporter.displayCityInfo(topNPopulatedCitiesInRegion, String.format("Top %d Populated Cities In %s", topN, region));
-//        cityReporter.displayCityInfo(topNPopulatedCitiesInCountry, String.format("Top %d Populated Cities In %s", topN, country));
-//        cityReporter.displayCityInfo(topNPopulatedCitiesInDistrict, String.format("Top %d Populated Cities In %s", topN, district));
+        cityReporter.displayCityInfo(sortCityByPopulation, "Sorted Cities By Population");
+        cityReporter.displayCityInfo(sortCityByPopulationBasedOnContinent, String.format("Sorted Cities By Population In %s", continent));
+        cityReporter.displayCityInfo(sortCityByPopulationBasedOnRegion, String.format("Sorted Cities By Population In %s", region));
+        cityReporter.displayCityInfo(sortCityByPopulationInCountry, String.format("Sorted Cities By Population In %s", country));
+        cityReporter.displayCityInfo(sortCityByPopulationInDistrict, String.format("Sorted Cities By Population In %s", district));
+        cityReporter.displayCityInfo(topNPopulatedCities, String.format("Top %d Populated Cities", topN));
+        cityReporter.displayCityInfo(topNPopulatedCitiesInContinent, String.format("Top %d Populated Cities In %s", topN, continent));
+        cityReporter.displayCityInfo(topNPopulatedCitiesInRegion, String.format("Top %d Populated Cities In %s", topN, region));
+        cityReporter.displayCityInfo(topNPopulatedCitiesInCountry, String.format("Top %d Populated Cities In %s", topN, country));
+        cityReporter.displayCityInfo(topNPopulatedCitiesInDistrict, String.format("Top %d Populated Cities In %s", topN, district));
 
         CapitalCityReporter capitalCityReporter = new CapitalCityReporter();
         // For task 17
