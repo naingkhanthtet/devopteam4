@@ -23,8 +23,8 @@ public class CountryReporter {
             Statement stmt = con.createStatement();
             // Create string for SQL statement to get countries sorted by population
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
+                    "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital "
+                            + "FROM country c JOIN city ci ON c.Capital = ci.ID "
                             + "ORDER BY Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -56,8 +56,8 @@ public class CountryReporter {
         List<Country> countryList = new ArrayList<>();
         try {
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
+                    "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital "
+                            + "FROM country c JOIN city ci ON c.Capital = ci.ID "
                             + "WHERE Region = ? " // Add a WHERE clause to filter by continent
                             + "ORDER BY Population DESC";
             PreparedStatement pstmt = con.prepareStatement(strSelect);
@@ -91,8 +91,8 @@ public class CountryReporter {
         List<Country> countryList = new ArrayList<>();
         try {
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
+                    "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital "
+                            + "FROM country c JOIN city ci ON c.Capital = ci.ID "
                             + "WHERE Continent = ? " // Add a WHERE clause to filter by continent
                             + "ORDER BY Population DESC";
             PreparedStatement pstmt = con.prepareStatement(strSelect);
@@ -126,8 +126,8 @@ public class CountryReporter {
         List<Country> countryList = new ArrayList<>();
         try {
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
+                    "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital "
+                            + "FROM country c JOIN city ci ON c.Capital = ci.ID "
                             + "ORDER BY Population DESC "
                             + "LIMIT ?";
             PreparedStatement pstmt = con.prepareStatement(strSelect);
@@ -162,8 +162,8 @@ public class CountryReporter {
         List<Country> countryList = new ArrayList<>();
         try {
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
+                    "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital "
+                            + "FROM country c JOIN city ci ON c.Capital = ci.ID "
                             + "WHERE Continent = ? " // Add a WHERE clause to filter by continent
                             + "ORDER BY Population DESC "
                             + "LIMIT ?";
@@ -200,8 +200,8 @@ public class CountryReporter {
         List<Country> countryList = new ArrayList<>();
         try {
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
+                    "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.NAME AS Capital "
+                            + "FROM country c JOIN city ci ON c.Capital = ci.ID "
                             + "WHERE Region = ? " // Add a WHERE clause to filter by region
                             + "ORDER BY Population DESC "
                             + "LIMIT ?";
@@ -240,7 +240,7 @@ public class CountryReporter {
         country.setContinent(rset.getString("Continent"));
         country.setRegion(rset.getString("Region"));
         country.setPopulation(rset.getInt("Population"));
-        country.setCapital(rset.getInt("Capital"));
+        country.setCapital(rset.getString("Capital"));
         return country;
     }
 
@@ -263,8 +263,8 @@ public class CountryReporter {
      * @param countryList The list of countries to display.
      * @param title       The title to display before the table.
      */
-    public void displayCountryInfo( List<Country> countryList, String title) {
-        // Check cityList is not null
+    public void displayCountryInfo(List<Country> countryList, String title) {
+        // Check cityList and title is not null
         if (countryList == null || title == null) {
             System.out.println("No countries or no title information provided.");
             return;
@@ -273,7 +273,7 @@ public class CountryReporter {
 
         String titleAlignment = " %-10s %-40s %-20s %-30s %-20s %-10s %n";
         System.out.format(titleAlignment, "Code", "Name", "Continent", "Region", "Population", "Capital");
-        String bodyAlignment = " %-10s %-40s %-20s %-30s %-20d %-10d %n";
+        String bodyAlignment = " %-10s %-40s %-20s %-30s %-20d %-20s %n";
         for (Country country : countryList) {
             if (country == null) {
                 continue;

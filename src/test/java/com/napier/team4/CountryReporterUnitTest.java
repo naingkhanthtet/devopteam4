@@ -39,7 +39,7 @@ public class CountryReporterUnitTest {
     @Test
     void displayCountryInfo() {
         ArrayList<Country> countryList = new ArrayList<Country>();
-        Country country = new Country("CountryCode", "CountryName", "ContinentName", "RegionName", 10000, 12345);
+        Country country = new Country("CountryCode", "CountryName", "ContinentName", "RegionName", 10000, "Capital Name");
         countryList.add(country);
         countryReporter.displayCountryInfo(countryList, "Display Country Info");
     }
