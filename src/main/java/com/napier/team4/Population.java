@@ -49,7 +49,7 @@ public class Population {
      * @param populationInCities   the population living in cities
      * @param populationNotInCities the population not living in cities
      */
-    public Population(String locationName, long totalPopulation, long populationInCities, long populationNotInCities) {
+    public Population(String locationName, long totalPopulation, long populationInCities, long populationNotInCities, double percentageInCities, double percentageNotInCities) {
         this.locationName = locationName;
         this.totalPopulation = totalPopulation;
         this.populationInCities = populationInCities;

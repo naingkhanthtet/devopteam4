@@ -360,7 +360,11 @@ public class PopulationReporter {
         System.out.println();
     }
 
-    public void displayAdditionalInfo(long population, String title) {
+    public void displayAdditionalInfo(Long population, String title) {
+        if (population == null || title == null){
+            System.out.println("No population data or title information provided");
+            return;
+        }
         System.out.println(title + " = " + population);
     }
 }
