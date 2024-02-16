@@ -1,6 +1,6 @@
 # READ ME 
 
-![workflow](https://github.com/naingkhanthtet/sem/actions/workflows/main.yml/badge.svg)
+![workflow](https://github.com/naingkhanthtet/devopteam4/actions/workflows/main.yml/badge.svg)
 
 # Software Engineering Methods
 
@@ -12,6 +12,43 @@ Develop branch build status ![GitHub Workflow Status (branch)](https://img.shiel
 
 Code coverage [![codecov](https://codecov.io/gh/naingkhanthtet/devopteam4/graph/badge.svg?token=TA5WBL97CX)](https://codecov.io/gh/naingkhanthtet/devopteam4)
 
-[![LICENSE](https://img.shields.io/github/license/naingkhanthtet/sem.svg?style=flat-square)](https://github.com/naingkhanthtet/devopteam4/blob/master/LICENSE)
+[![Releases](https://img.shields.io/github/release/naingkhanthtet/devopteam4/all.svg?style=flat-square)](https://github.com/naingkhanthtet/devopteam4/releases)
 
-[![Releases](https://img.shields.io/github/release/naingkhanthtet/sem/all.svg?style=flat-square)](https://github.com/naingkhanthtet/devopteam4/releases)
+[![LICENSE](https://img.shields.io/github/license/naingkhanthtet/devopteam4.svg?style=flat-square)](https://github.com/naingkhanthtet/devopteam4/blob/master/LICENSE)
+
+> ? requirements of ? have been implemented, which is ?%.
+
+| ID | Name | Met | Screenshot |
+|----|---|---|---|
+| 1  |      |     |            |
+| 2  |      |     |            |
+| 3  |      |     |            |
+| 4  |      |     |            |
+| 5  |      |     |            |
+| 6  |      |     |            |
+| 7  |      |     |            |
+| 8  |      |     |            |
+| 9  |      |     |            |
+| 10 |      |     |            |
+| 11 |      |     |            |
+| 12 |      |     |            |
+| 13 |      |     |            |
+| 14 |      |     |            |
+| 15 |      |     |            |
+| 16 |      |     |            |
+| 17 |      |     |            |
+| 18 |      |     |            |
+| 19 |      |     |            |
+| 20 |      |     |            |
+| 21 |      |     |            |
+| 22 |      |     |            |
+| 23 |      |     |            |
+| 24 |      |     |            |
+| 25 |      |     |            |
+| 26 |      |     |            |
+| 27 |      |     |            |
+| 28 |      |     |            |
+| 29 |      |     |            |
+| 30 |      |     |            |
+| 31 |      |     |            |
+| 32 |      |     |            |
