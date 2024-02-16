@@ -576,4 +576,150 @@ public class AppIntegrationTest {
             assertTrue(city.getPopulation() >= 0, "Capital City population should have value");
         }
     }
+
+    /*
+     * population report testing methods
+     */
+    @Test
+    void testPopulationStaticForContinent() {
+        PopulationReporter populationReporter = new PopulationReporter();
+
+        // retrieves a list of population static for all continents
+        List<Population> populationList = populationReporter.getPopulationStaticForContinent(con);
+
+        // assuming the first row be the same as configuration.
+        assertEquals("North America", populationList.get(0).getLocationName());
+        assertEquals(482993000, populationList.get(0).getTotalPopulation());
+        assertEquals(168250381, populationList.get(0).getPopulationInCities());
+        assertEquals(314742619, populationList.get(0).getPopulationNotInCities());
+        assertEquals(34.83, populationList.get(0).getPercentageInCities(), 0.01);
+        assertEquals(65.17, populationList.get(0).getPercentageNotInCities(), 0.01);
+    }
+
+    @Test
+    void testPopulationStaticForRegion() {
+        PopulationReporter populationReporter = new PopulationReporter();
+
+        // retrieves a list of population static for all regions
+        List<Population> populationList = populationReporter.getPopulationStatisticsForRegion(con);
+
+        // assuming the first row be the same as configuration.
+        assertEquals("Caribbean", populationList.get(0).getLocationName());
+        assertEquals(38140000, populationList.get(0).getTotalPopulation());
+        assertEquals(11067550, populationList.get(0).getPopulationInCities());
+        assertEquals(27072450, populationList.get(0).getPopulationNotInCities());
+        assertEquals(29.02, populationList.get(0).getPercentageInCities(), 0.01);
+        assertEquals(70.98, populationList.get(0).getPercentageNotInCities(), 0.01);
+    }
+
+    @Test
+    void testPopulationStaticForCountry() {
+        PopulationReporter populationReporter = new PopulationReporter();
+
+        // retrieves a list of population static for all countries
+        List<Population> populationList = populationReporter.getPopulationStatisticsForCountry(con);
+
+        assertNotNull(populationList, "Population List for country should not be null");
+        // assuming the first row be the same as configuration.
+        assertEquals("Aruba", populationList.get(0).getLocationName());
+        assertEquals(103000, populationList.get(0).getTotalPopulation());
+        assertEquals(29034, populationList.get(0).getPopulationInCities());
+        assertEquals(73966, populationList.get(0).getPopulationNotInCities());
+        assertEquals(28.19, populationList.get(0).getPercentageInCities(), 0.01);
+        assertEquals(71.81, populationList.get(0).getPercentageNotInCities(), 0.01);
+    }
+
+    @Test
+    void testPopulationByLanguage() {
+        PopulationReporter populationReporter = new PopulationReporter();
+
+        // retrieves a list of population static for all countries
+        List <Language> populationList = populationReporter.getPopulationByLanguage(con);
+
+        // population list by language should not be null
+        assertNotNull(populationList, "Population List by language should not be null");
+
+        double prevPopulationPercentage = Double.MAX_VALUE;
+        for (Language population : populationList) {
+            double current_percentage = population.getPercentageInWorld();
+            assertTrue(current_percentage <= prevPopulationPercentage, "population percentage should be sorted in descending order");
+            prevPopulationPercentage = current_percentage;
+            iterationCount++;
+            // only want to loop a list a bit
+            if (iterationCount > 5) break;
+
+        }
+    }
+
+    @Test
+    void testPopulationOfTheWorld() {
+        PopulationReporter populationReporter = new PopulationReporter();
+
+        // retrieves a value of the population of the world
+        long population_world = populationReporter.getPopulationOfTheWorld(con);
+
+        // population of the world should not be null
+        assertNotNull(population_world, "Population of the world should not be null");
+        assertEquals(6078749450L, population_world, "expected population of the world");
+    }
+
+    @Test
+    void testPopulationOfTheContinent() {
+        PopulationReporter populationReporter = new PopulationReporter();
+
+        // retrieves a value of the population of the continent
+        long population_continent = populationReporter.getPopulationOfContinent(con, continentName);
+
+        // population of the continent should not be null
+        assertNotNull(population_continent, "Population of the continent should not be null");
+        assertEquals(3705025700L, population_continent, "expected population of the continent");
+    }
+
+    @Test
+    void testPopulationOfTheRegion() {
+        PopulationReporter populationReporter = new PopulationReporter();
+
+        // retrieves a value of the population of the region
+        long population_region = populationReporter.getPopulationOfRegion(con, regionName);
+
+        // population of the region should not be null
+        assertNotNull(population_region, "Population of the region should not be null");
+        assertEquals(38140000L, population_region, "expected population of the region");
+    }
+
+    @Test
+    void testPopulationOfTheCountry() {
+        PopulationReporter populationReporter = new PopulationReporter();
+
+        // retrieves a value of the population of the country
+        long population_country = populationReporter.getPopulationOfCountryByName(con, countryName);
+
+        // population of the country should not be null
+        assertNotNull(population_country, "Population of the country should not be null");
+        assertEquals(45611000L, population_country, "expected population of the country");
+    }
+
+    @Test
+    void testPopulationOfTheDistrict() {
+        PopulationReporter populationReporter = new PopulationReporter();
+
+        // retrieves a value of the population of the district
+        long population_district = populationReporter.getPopulationOfDistrict(con, districtName);
+
+        // population of the district should not be null
+        assertNotNull(population_district, "Population of the district should not be null");
+        assertEquals(1780000L, population_district, "expected population of the district");
+    }
+
+    @Test
+    void testPopulationOfTheCity() {
+        PopulationReporter populationReporter = new PopulationReporter();
+
+        // retrieves a value of the population of the city
+        long population_city = populationReporter.getPopulationOfCity(con, "Taunggyi (Taunggye)");
+
+        // population of the city should not be null
+        assertNotNull(population_city, "Population of the city should not be null");
+        assertEquals(131500L, population_city, "expected population of the city");
+    }
 }
