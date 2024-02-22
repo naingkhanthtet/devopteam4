@@ -48,6 +48,8 @@ public class Population {
      * @param totalPopulation      the total population
      * @param populationInCities   the population living in cities
      * @param populationNotInCities the population not living in cities
+     * @param percentageInCities   the percentage of the population living in cities
+     * @param percentageNotInCities the percentage of the population not living in cities
      */
     public Population(String locationName, long totalPopulation, long populationInCities, long populationNotInCities, double percentageInCities, double percentageNotInCities) {
         this.locationName = locationName;
@@ -60,18 +62,38 @@ public class Population {
 
     // Getters and setters for percentage values
 
+    /**
+     * Gets the percentage of the population living in cities.
+     *
+     * @return the percentage of population in cities
+     */
     public double getPercentageInCities() {
         return percentageInCities;
     }
 
+    /**
+     * Sets the percentage of the population living in cities.
+     *
+     * @param percentageInCities the percentage of population in cities to set
+     */
     public void setPercentageInCities(double percentageInCities) {
         this.percentageInCities = percentageInCities;
     }
 
+    /**
+     * Gets the percentage of the population not living in cities.
+     *
+     * @return the percentage of population not in cities
+     */
     public double getPercentageNotInCities() {
         return percentageNotInCities;
     }
 
+    /**
+     * Sets the percentage of the population not living in cities.
+     *
+     * @param percentageNotInCities the percentage of population not in cities to set
+     */
     public void setPercentageNotInCities(double percentageNotInCities) {
         this.percentageNotInCities = percentageNotInCities;
     }
