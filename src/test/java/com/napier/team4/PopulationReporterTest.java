@@ -37,7 +37,7 @@ public class PopulationReporterTest {
     @Test
     void displayPopulationByLanguage(){
         ArrayList<Language> languageArrayList = new ArrayList<>();
-        Language language = new Language("Language", 1000, 50.00, 50.00);
+        Language language = new Language("Language", 1000, 50.00);
         languageArrayList.add(language);
         populationReporter.displayPopulationByLanguage(languageArrayList, "Display Population by Language");
     }
