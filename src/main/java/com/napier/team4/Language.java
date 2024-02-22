@@ -23,7 +23,7 @@ public class Language {
     /**
      * The percentage of the population not speaking the language.
      */
-    private double getPercentageNotInWorld;
+//    private double getPercentageNotInWorld;
 
     /**
      * Default constructor for the Language class.
@@ -37,13 +37,12 @@ public class Language {
      * @param language The name of the language.
      * @param totalPopulation The total population of speakers of the language.
      * @param percentageInWorld The percentage of speakers of the language in the world.
-     * @param getPercentageNotInWorld The percentage of the population not speaking the language.
      */
-    public Language(String language, long totalPopulation, double percentageInWorld, double getPercentageNotInWorld) {
+    public Language(String language, long totalPopulation, double percentageInWorld) {
         this.language = language;
         this.totalPopulation = totalPopulation;
         this.percentageInWorld = percentageInWorld;
-        this.getPercentageNotInWorld = getPercentageNotInWorld;
+//        this.getPercentageNotInWorld = getPercentageNotInWorld;
     }
 
     /**
@@ -94,21 +93,6 @@ public class Language {
         this.percentageInWorld = percentageInWorld;
     }
 
-    /**
-     * Getter for the percentage of the population not speaking the language.
-     * @return The percentage of the population not speaking the language.
-     */
-    public double getGetPercentageNotInWorld() {
-        return getPercentageNotInWorld;
-    }
-
-    /**
-     * Setter for the percentage of the population not speaking the language.
-     * @param getPercentageNotInWorld The percentage of the population not speaking the language.
-     */
-    public void setGetPercentageNotInWorld(double getPercentageNotInWorld) {
-        this.getPercentageNotInWorld = getPercentageNotInWorld;
-    }
 
     /**
      * Returns a string representation of the Language object.
@@ -120,7 +104,6 @@ public class Language {
                 "language='" + language + '\'' +
                 ", totalPopulation=" + totalPopulation +
                 ", percentageInWorld=" + percentageInWorld +
-                ", getPercentageNotInWorld=" + getPercentageNotInWorld +
                 '}';
     }
 }
